@@ -15,7 +15,7 @@ class workstation::package (
   Boolean $prefer_yes = true,
   Boolean $autoclean = true
 ) {
-  # Make sure this subclasses is executed after workstation is loaded.
+  # Make sure this subclass is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
     fail('You must include the base workstation class before using any subclasses.')
   }
