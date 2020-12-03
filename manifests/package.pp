@@ -13,7 +13,7 @@
 #
 class workstation::package (
   Boolean $prefer_yes = true,
-  Boolean $autoclean = false
+  Boolean $autoclean = true
 ) {
   # Make sure this subclasses is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
