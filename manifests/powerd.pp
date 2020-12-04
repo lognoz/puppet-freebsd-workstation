@@ -1,7 +1,13 @@
-# FreeBSD Powerd Support
+# Class: workstation::powerd
 #
 # This class initialize powerd package. This program utility monitors
 # the system state and sets various power control options accordingly.
+#
+# Requires:
+#   Class workstation
+#
+# Sample Usage:
+#   include workstation::powerd
 #
 class workstation::powerd {
   # Make sure this subclass is executed after workstation is loaded.

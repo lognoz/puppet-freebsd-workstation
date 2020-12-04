@@ -1,15 +1,26 @@
-# FreeBSD Package Support
+# Class: workstation::package
 #
 # This class sets FreeBSD package configurations.
 #
-# $prefer_yes   Boolean used to make yes option the default operations
-#               for dialog. Most pkg operations offer a yes/no
-#               question, showing the default as a capital letter.
-#               Being conservative, pkg normally defaults to no.
+# Parameters:
+#   [*prefer_yes*]
+#     Boolean used to make yes option the default operations
+#     for dialog. Most pkg operations offer a yes/no
+#     question, showing the default as a capital letter.
+#     Being conservative, pkg normally defaults to no.
+#     Default: true
 #
-# $autoclean    Boolean used to automatically clean out the content of
-#               pkg cache after each non dry-run call to 'pkg install'
-#               or 'pkg upgrade'.
+#   [*autoclean*]
+#     Boolean used to automatically clean out the content of
+#     pkg cache after each non dry-run call to 'pkg install'
+#     or 'pkg upgrade'.
+#     Default: true
+#
+# Requires:
+#   Class workstation
+#
+# Sample Usage:
+#   include workstation::package
 #
 class workstation::package (
   Boolean $prefer_yes = true,

@@ -1,7 +1,13 @@
-# FreeBSD System Utils
+# Class: workstation::system
 #
 # This class initialize system utils and give access to CPU
 # temperature and system management.
+#
+# Requires:
+#   Class workstation
+#
+# Sample Usage:
+#   include workstation::system
 #
 class workstation::system {
   # Make sure this subclass is executed after workstation is loaded.

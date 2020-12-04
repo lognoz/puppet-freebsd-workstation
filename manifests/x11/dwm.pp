@@ -19,7 +19,7 @@ class workstation::x11::dwm {
     unless => 'which dwm'
   }
 
-  class { 'workstation::x11::init':
-    content => 'exec dwm'
+  workstation::x11::conf {
+    'exec dwm':
   }
 }

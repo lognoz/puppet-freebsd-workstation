@@ -1,13 +1,26 @@
-# FreeBSD Languages Support
+# Class: workstation::languages
 #
 # This class sets keyboard in xorg. For each input device (keyboard,
 # mouse, etc.) it need an InputClass section.
 #
-# $keyboard  String used as kbd layout.
-
-# $aspell    Array of languages to install via Freebsd ports. Make
-#            sure to have the right package name before to call this
-#            class.
+# Parameters:
+#   [*keyboard*]
+#     String used as kbd layout.
+#     Default: undef
+#
+#   [*aspell*]
+#     Array of languages to install via Freebsd ports. Make sure
+#     to have the right package name before to call this class.
+#     Default: undef
+#
+# Requires:
+#   Class workstation::x11::xorg
+#
+# Sample Usage:
+#   class { 'workstation::languages':
+#     keyboard => 'us,ca',
+#     aspell => ['en','fr']
+#   }
 #
 class workstation::languages (
   String $keyboard = undef,
