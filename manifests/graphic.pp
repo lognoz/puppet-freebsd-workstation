@@ -1,10 +1,21 @@
-# FreeBSD Graphics Support
+# Class: workstation::graphic
 #
 # This class add graphics support to make FreeBSD usable as a desktop.
 # It only supports Intel HD and NVIDIA graphics cards.
 #
-# $hardware   String used to install the right graphic card.
-#             It expected to recives 'intel' or 'nvidia'.
+# Parameters:
+#   [*hardware*]
+#     String used to install the right graphic card.
+#     It expected to recives 'intel' or 'nvidia'.
+#     Default: undef
+#
+# Requires:
+#   Class workstation
+#
+# Sample Usage:
+#   class { 'workstation::graphic':
+#     hardware => 'nvidia'
+#   }
 #
 class workstation::graphic (
   String $hardware = undef
