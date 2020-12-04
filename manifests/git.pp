@@ -1,8 +1,26 @@
-# FreeBSD Git Support
+# Class: workstation::git
 #
 # This class initialize git package. This program is a distributed
 # version-control system for tracking changes in source code during
 # software development.
+#
+# Parameters:
+#   [*username*]
+#     Content of git user name.
+#     Default: undef
+#
+#   [*email*]
+#     Content of git user email.
+#     Default: undef
+#
+# Requires:
+#   Class workstation
+#
+# Sample Usage:
+#   class { 'workstation::git':
+#     username  => 'Marc-Antoine Loignon',
+#     email => 'developer@lognoz.org'
+#   }
 #
 class workstation::git (
   String $username = undef,
