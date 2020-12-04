@@ -1,9 +1,19 @@
-# FreeBSD Xorg Conf
+# Define: workstation::x11:conf
 #
-# This class sets xinitrc content. This program allows a user to
-# manually start an Xorg display server.
+# This module manages Xorg configurations.
 #
-# $content   String or array used to append in .xinitrc file.
+# Parameters:
+#   [*content*]
+#     Content of configuration to append.
+#     Default: $title
+#
+# Requires:
+#   Class workstation
+#
+# Sample Usage:
+#   workstation::x11::conf {
+#     'xmodmap ~/.Xmodmap'
+#   }
 #
 define workstation::x11::conf (
   Variant[String, Array] $content = $title
