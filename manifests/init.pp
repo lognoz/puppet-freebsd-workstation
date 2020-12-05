@@ -17,6 +17,7 @@ class workstation (
   String $username = undef,
   String $password = undef,
   String $timezone = undef,
+  String $root = '/usr/local/etc/puppet/modules/workstation/',
   Variant[String, Undef] $shell = undef
 ) {
   # Make sure this script is executed in FreeBSD.
