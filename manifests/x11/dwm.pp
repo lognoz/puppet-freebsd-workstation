@@ -1,4 +1,4 @@
-# Define: workstation::x11:dwm
+# Class: workstation::x11:dwm
 #
 # This module manages Dynamic Windows Manager installation.
 #
