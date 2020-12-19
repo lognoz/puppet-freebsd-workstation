@@ -24,4 +24,14 @@ class workstation::system {
     path => '/boot/loader.conf',
     line => 'coretemp_load="YES"'
   }
+
+  file_line { 'Disable core dump in /etc/sysctl.conf':
+    path => '/etc/sysctl.conf',
+    line => 'kern.coredump=0'
+  }
+
+  file_line { 'Change core file in /etc/sysctl.conf':
+    path => '/etc/sysctl.conf',
+    line => 'kern.corefile=/dev/null'
+  }
 }
