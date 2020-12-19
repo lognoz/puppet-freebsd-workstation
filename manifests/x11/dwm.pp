@@ -12,10 +12,10 @@ class workstation::x11::dwm {
   # Make sure this subclass is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
     fail('You must include the base workstation class before using any subclasses.')
+  } else {
+    include workstation
+    include workstation::fonts
   }
-
-  include workstation
-  include workstation::fonts
 
   Exec {
     path => [
