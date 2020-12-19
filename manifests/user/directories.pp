@@ -1,10 +1,10 @@
-# Class: workstation::user:directories
+# Class: workstation::user::directories
 #
 # Requires:
 #   Class workstation
 #
 # Sample Usage:
-#   include workstation::user:directories
+#   include workstation::user::directories
 #
 class workstation::user::directories (
   String $desktop  = '/',
