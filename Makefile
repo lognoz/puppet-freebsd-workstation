@@ -18,14 +18,15 @@ refresh:
 	fi
 
 dependencies: check-privilege
-	puppet module install puppetlabs-apache
-	puppet module install puppet-php
+	puppet module install puppet-archive
 	puppet module install puppet-nodejs
+	puppet module install puppet-php
+	puppet module install puppetlabs-apache
+	puppet module install puppetlabs-mysql
 	puppet module install puppetlabs-stdlib
 	puppet module install puppetlabs-vcsrepo
-	puppet module install puppet-archive
-	puppet module install saz-timezone
 	puppet module install saz-sudo
+	puppet module install saz-timezone
 
 provisioning: check-privilege
 	set ASSUME_ALWAYS_YES = yes
