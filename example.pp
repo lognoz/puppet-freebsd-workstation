@@ -29,15 +29,21 @@ node default {
     email => 'developer@lognoz.org'
   }
 
-  include workstation::x11::dwm
-  include workstation::user::directories
-
   class { 'workstation::user::vim':
     source => 'https://github.com/lognoz/vimrc'
   }
 
-  include workstation::web::php
-  include workstation::web::mysql
-  include workstation::web::apache
-  include workstation::web::npm
+  include workstation::x11::dwm
+  include workstation::user::directories
+
+  include workstation::programming::web::php
+  include workstation::programming::web::mysql
+  include workstation::programming::web::apache
+  include workstation::programming::web::npm
+
+  include workstation::programming::python
+  include workstation::programming::virtualisation
+
+  include workstation::browser::wget
+  include workstation::browser::firefox
 }
