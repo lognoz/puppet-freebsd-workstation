@@ -1,12 +1,12 @@
-# Class: workstation::web::mysql
+# Class: workstation::programming::web::mysql
 #
 # Requires:
 #   Class workstation
 #
 # Sample Usage:
-#   include workstation::web:mysql
+#   include workstation::programming::web:mysql
 #
-class workstation::web::mysql {
+class workstation::programming::web::mysql {
   # Make sure this subclass is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
     fail('You must include the base workstation class before using any subclasses.')

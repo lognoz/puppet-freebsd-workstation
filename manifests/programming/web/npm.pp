@@ -1,12 +1,12 @@
-# Class: workstation::web::npm
+# Class: workstation::programming::web::npm
 #
 # Requires:
 #   Class workstation
 #
 # Sample Usage:
-#   include workstation::web:npm
+#   include workstation::programming::web:npm
 #
-class workstation::web::npm {
+class workstation::programming::web::npm {
   # Make sure this subclass is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
     fail('You must include the base workstation class before using any subclasses.')

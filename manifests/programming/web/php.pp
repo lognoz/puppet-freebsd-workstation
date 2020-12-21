@@ -1,12 +1,12 @@
-# Class: workstation::web::php
+# Class: workstation::programming::web::php
 #
 # Requires:
 #   Class workstation
 #
 # Sample Usage:
-#   include workstation::web:php
+#   include workstation::programming::web:php
 #
-class workstation::web::php {
+class workstation::programming::web::php {
   # Make sure this subclass is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
     fail('You must include the base workstation class before using any subclasses.')

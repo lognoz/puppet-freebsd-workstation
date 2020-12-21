@@ -1,12 +1,12 @@
-# Class: workstation::web::apache
+# Class: workstation::programming::web::apache
 #
 # Requires:
 #   Class workstation
 #
 # Sample Usage:
-#   include workstation::web:apache
+#   include workstation::programming::web:apache
 #
-class workstation::web::apache {
+class workstation::programming::web::apache {
   # Make sure this subclass is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
     fail('You must include the base workstation class before using any subclasses.')
@@ -14,13 +14,13 @@ class workstation::web::apache {
     include workstation
   }
 
-  include workstation::web::php
-  include workstation::web::mysql
+  include workstation::programming::web::php
+  include workstation::programming::web::mysql
 
   class { 'apache': }
 
   apache::vhost { 'localhost':
-    docroot => '/home/lognoz/www/',
+    docroot => "/home/${worstation::username}/www/",
     docroot_owner  => $workstation::username,
     docroot_group  => $workstation::username
   }
