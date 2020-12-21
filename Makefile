@@ -27,6 +27,7 @@ dependencies: check-privilege
 	puppet module install puppetlabs-vcsrepo
 	puppet module install saz-sudo
 	puppet module install saz-timezone
+	puppet module install rehan-wget
 
 provisioning: check-privilege
 	set ASSUME_ALWAYS_YES = yes
