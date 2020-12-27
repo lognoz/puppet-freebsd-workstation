@@ -38,17 +38,6 @@ class workstation (
     ensure => present
   }
 
-  # Set a default $PATH for all executable.
-  Exec {
-    path => [
-      '/bin/',
-      '/sbin/',
-      '/usr/bin/',
-      '/usr/sbin/',
-      '/usr/local/bin/'
-    ]
-  }
-
   # Make sure that the Free Software Fondation core utils is installed
   # on the system. This package give access to GNU commands like ls,
   # kill, cat, etc.
