@@ -14,9 +14,13 @@ class workstation::fonts {
     fail('You must include the base workstation class before using any subclasses.')
   }
 
-  package { 'sourcecodepro-ttf': }
+  package { [
+    'sourcecodepro-ttf',
+    'roboto-fonts-ttf'
+  ]: }
 
-  workstation::x11::conf {
-    'FontPath "/usr/local/share/fonts/SourceCodePro/"':
-  }
+  workstation::x11::conf { [
+    'FontPath "/usr/local/share/fonts/SourceCodePro/"',
+    'FontPath "/usr/local/share/fonts/roboto-fonts-ttf/"'
+  ]: }
 }
