@@ -20,7 +20,7 @@ class workstation::programming::web::apache {
   class { 'apache': }
 
   apache::vhost { 'localhost':
-    docroot => "/home/${worstation::username}/www/",
+    docroot => "/home/${workstation::username}/www/",
     docroot_owner  => $workstation::username,
     docroot_group  => $workstation::username
   }

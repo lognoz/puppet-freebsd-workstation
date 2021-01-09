@@ -12,7 +12,10 @@ class workstation::programming::web::php {
     fail('You must include the base workstation class before using any subclasses.')
   }
 
-  package { 'mod_php74': }
+  package { [
+    'php74-composer',
+    'mod_php74'
+  ]: }
 
   class { 'php::globals':
     php_version => '7.4'

@@ -1,19 +1,21 @@
-# Class: workstation::programming::python
+# Class: workstation::programming::lisp::clisp
 #
 # Requires:
 #   Class workstation
 #
 # Sample Usage:
-#   include workstation::programming::python
+#   include workstation::programming::lisp::clisp
 #
-class workstation::programming::python {
+class workstation::programming::lisp::clisp {
   # Make sure this subclass is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
     fail('You must include the base workstation class before using any subclasses.')
+  } else {
+    include workstation
   }
 
   package { [
-    'python37',
-    'py37-pip-run'
+    'clisp',
+    'clisp-hyperspec'
   ]: }
 }

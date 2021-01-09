@@ -6,7 +6,12 @@
 # Sample Usage:
 #   include workstation::programming::web:npm
 #
-class workstation::programming::web::npm {
+class workstation::programming::web::npm (
+  $packages = [
+    'grunt-cli',
+    'psd-cli'
+  ]
+) {
   # Make sure this subclass is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
     fail('You must include the base workstation class before using any subclasses.')
@@ -14,7 +19,7 @@ class workstation::programming::web::npm {
 
   package { 'npm-node12': }
 
-  exec { 'npm install -g grunt-cli':
-    path => '/usr/local/bin/'
+  $packages.each |String $package| {
+    exec { "npm install -g ${package}": }
   }
 }
