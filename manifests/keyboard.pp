@@ -1,4 +1,4 @@
-# Class: workstation::languages
+# Class: workstation::keyboard
 #
 # This class sets keyboard in xorg. For each input device (keyboard,
 # mouse, etc.) it need an InputClass section.
@@ -22,7 +22,7 @@
 #     aspell => ['en','fr']
 #   }
 #
-class workstation::languages (
+class workstation::keyboard (
   String $keyboard = undef,
   Array $aspell = undef
 ) {
