@@ -14,9 +14,10 @@ class workstation::user::emacs (
   # Make sure this subclass is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
     fail('You must include the base workstation class before using any subclasses.')
-  } else {
-    include workstation
   }
+
+  include workstation
+  include workstation::gnu
 
   package { 'emacs': }
 
