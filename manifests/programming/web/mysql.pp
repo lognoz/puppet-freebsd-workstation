@@ -15,7 +15,9 @@ class workstation::programming::web::mysql {
   package { 'phpMyAdmin5-php74': }
 
   class { 'mysql::server':
-    root_password  => '',
+    package_name => 'mariadb105-server',
+    config_file  => '/usr/local/etc/mysql/conf.d/server.cnf',
+    root_password => '',
     restart => true,
   }
 

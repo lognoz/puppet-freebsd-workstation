@@ -21,8 +21,9 @@ class workstation::programming::web::apache {
 
   apache::vhost { 'localhost':
     docroot => "/home/${workstation::username}/www/",
-    docroot_owner  => $workstation::username,
-    docroot_group  => $workstation::username
+    docroot_owner => $workstation::username,
+    docroot_group => $workstation::username,
+    override => 'All',
   }
 
   apache::vhost { 'mysql.localhost':
