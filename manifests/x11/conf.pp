@@ -18,12 +18,13 @@
 define workstation::x11::conf (
   Variant[String, Array] $content = $title
 ) {
-  # Make sure this subclasses is executed after xorg is loaded.
-  if ! defined(Class['workstation::x11::xorg']) {
-    fail('You must include the xorg workstation class before using any subclasses.')
+  # Make sure this subclass is executed after workstation is loaded.
+  if ! defined(Class['workstation']) {
+    fail('You must include the base workstation class before using any subclasses.')
   }
 
   include workstation
+  include workstation::x11::xorg
 
   if $content.is_a(String) {
     $lines = [ $content ]
