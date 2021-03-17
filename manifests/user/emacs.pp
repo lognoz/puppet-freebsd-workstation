@@ -19,7 +19,7 @@ class workstation::user::emacs (
   include workstation
   include workstation::gnu
 
-  package { 'emacs': }
+  package { 'emacs-devel': }
 
   vcsrepo { 'Clone Emacs configuration':
     ensure   => present,
