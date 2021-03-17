@@ -15,15 +15,14 @@ class workstation::user::directories (
   String $public   = '/public',
   String $template = '/template',
   String $video    = '/video',
+  Array $directories = []
 ) {
   # Make sure this subclass is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
     fail('You must include the base workstation class before using any subclasses.')
   }
 
-  package {
-    'xdg-user-dirs':
-  }
+  package { 'xdg-user-dirs': }
 
   File {
     owner => $workstation::username,
@@ -38,5 +37,11 @@ class workstation::user::directories (
   file { "/home/${workstation::username}/.config/user-dirs.dirs":
     ensure  => present,
     content => template('workstation/user-dirs.erb')
+  }
+
+  $directories.each |String $directory| {
+    file { "/home/${workstation::username}/${directory}":
+      ensure => directory
+    }
   }
 }
