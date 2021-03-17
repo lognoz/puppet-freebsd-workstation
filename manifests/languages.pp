@@ -26,10 +26,13 @@ class workstation::languages (
   String $keyboard = undef,
   Array $aspell = undef
 ) {
-  # Make sure this subclasses is executed after xorg is loaded.
-  if ! defined(Class['workstation::x11::xorg']) {
-    fail('You must include the xorg workstation class before using any subclasses.')
+  # Make sure this subclass is executed after workstation is loaded.
+  if ! defined(Class['workstation']) {
+    fail('You must include the base workstation class before using any subclasses.')
   }
+
+  include workstation
+  include workstation::x11::xorg
 
   package { 'aspell-ispell': }
 
