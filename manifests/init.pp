@@ -47,7 +47,10 @@ class workstation (
   # install and use bash. If you define your own executable shell,
   # make sure to install it before to call this class.
   if $shell == undef {
-    package { 'bash': }
+    package { [
+      'bash',
+      'bash-completion'
+    ]: }
     $processor = '/usr/local/bin/bash'
   } else {
     $processor = $shell
