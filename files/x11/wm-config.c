@@ -20,7 +20,7 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6" };
 static const Rule rules[] = {
 	/* Class      Instance    Title     Tags       Isfloating   Monitor */
 	{ "Emacs",    NULL,       NULL,     0,         0,           -1 },
-	{ "Firefox",  NULL,       NULL,     1 << 8,    0,           -1 },
+	{ "Firefox",  NULL,       NULL,     2,         0,           -1 },
 };
 
 /* Layout(s) */
