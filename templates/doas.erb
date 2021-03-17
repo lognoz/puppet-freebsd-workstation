@@ -1,0 +1,8 @@
+# Permit user <%= @username %> to run programs as root, maintaining
+# envrionment variables.
+permit keepenv <%= @username %> as root
+
+# Permit user <%= @username %> to run only the reboot and shutdow
+# command as root without asking password.
+permit nopass <%= @username %> cmd poweroff
+permit nopass <%= @username %> cmd reboot
