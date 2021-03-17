@@ -17,12 +17,13 @@ class workstation::multimedia::firefox (
   include workstation
   include workstation::multimedia::wget
 
+  package { 'firefox': }
+
   $path = "/home/${workstation::username}/.mozilla/extensions/"
 
   exec { "Create ${path}":
     creates => $path,
     command => "mkdir -p ${path}",
-    path => "/bin",
     user  => $workstation::username
   }
 
