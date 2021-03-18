@@ -1,0 +1,8 @@
+{
+  "/Makefile": "Make: ",
+  "/example.pp": "Example: ",
+  "/files/": "Files: ",
+  "/manifests/": "Manifests: ",
+  "/templates/": "Templates: ",
+  "/": "Build: "
+}
