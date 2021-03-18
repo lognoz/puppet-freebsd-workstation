@@ -9,7 +9,8 @@
 class workstation::programming::web::npm (
   $packages = [
     'grunt-cli',
-    'psd-cli'
+    'psd-cli',
+    'tern'
   ]
 ) {
   # Make sure this subclass is executed after workstation is loaded.
