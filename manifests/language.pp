@@ -24,6 +24,10 @@ class workstation::language (
 
   $share_directory = "/home/${workstation::username}/${directory}"
 
+  # Install package to translates acronyms for you.
+  package { 'wtf': }
+
+  # Install grammar and spell checker.
   package { [
     'aspell-ispell',
     'openjdk8-jre'
