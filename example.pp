@@ -20,7 +20,10 @@ node default {
   }
 
   class { 'workstation::keyboard':
-    keyboard => 'us,ca',
+    keyboard => 'us,ca'
+  }
+
+  class { 'workstation::language':
     aspell => [ 'en','fr' ]
   }
 
@@ -78,7 +81,8 @@ node default {
       '3690660/user_agent_switcher-1.4.1-an+fx.xpi',
       '3672658/decentraleyes-2.0.15-an+fx.xpi',
       '3682334/clearurls-1.20.0-an+fx.xpi',
-      '3691752/noscript_security_suite-11.1.6-an+fx.xpi'
+      '3691752/noscript_security_suite-11.1.6-an+fx.xpi',
+      '3724574/grammatik_und_rechtschreibprufung_languagetool-3.3.4-fx.xpi'
     ]
   }
 
