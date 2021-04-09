@@ -14,6 +14,7 @@ class workstation::programming::web::php {
 
   package { [
     'php74-composer',
+    'php74-curl',
     'mod_php74'
   ]: }
 
