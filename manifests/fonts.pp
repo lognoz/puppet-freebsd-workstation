@@ -16,7 +16,8 @@ class workstation::fonts {
 
   package { [
     'sourcecodepro-ttf',
-    'roboto-fonts-ttf'
+    'roboto-fonts-ttf',
+    'nerd-fonts'
   ]: }
 
   workstation::x11::conf { [
