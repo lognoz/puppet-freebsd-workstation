@@ -8,6 +8,10 @@
 #     String used as kbd layout.
 #     Default: undef
 #
+#   [*remap_caps*]
+#     Boolean on if caps lock is replaced by escape.
+#     Default: true
+#
 # Requires:
 #   Class workstation::x11::xorg
 #
@@ -17,7 +21,8 @@
 #   }
 #
 class workstation::keyboard (
-  String $keyboard = undef
+  String $keyboard = undef,
+  Boolean $remap_caps = true
 ) {
   # Make sure this subclass is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
