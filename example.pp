@@ -110,4 +110,10 @@ node default {
   include workstation::multimedia::wget
   include workstation::multimedia::firefox
   include workstation::multimedia::torrent
+
+  # Make sure to uninstall sudo because its vulnerability allows
+  # attackers to gain root privileges.
+  package { 'sudo':
+    ensure => absent
+  }
 }
