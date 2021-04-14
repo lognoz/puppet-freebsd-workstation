@@ -19,7 +19,10 @@ class workstation::user::emacs (
   include workstation
   include workstation::gnu
 
-  package { 'emacs-devel': }
+  package { [
+    'emacs-devel',
+    'py37-python-slugify'
+  ]: }
 
   vcsrepo { 'Clone Emacs configuration':
     ensure   => present,
