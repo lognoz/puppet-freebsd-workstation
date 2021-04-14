@@ -15,6 +15,7 @@ class workstation::gnu {
   package { [
     'gcc',
     'gmake',
-    'libtool'
+    'libtool',
+    'ripgrep'
   ]: }
 }
