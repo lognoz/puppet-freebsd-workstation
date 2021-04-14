@@ -94,11 +94,13 @@ node default {
   include workstation::doas
   include workstation::sudo
   include workstation::system
+  include workstation::security
   include workstation::package
   include workstation::alsamixer
   include workstation::x11::dwm
 
   include workstation::programming::python
+  include workstation::programming::latex
   include workstation::programming::virtualisation
   include workstation::programming::lisp::clisp
 
