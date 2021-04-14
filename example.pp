@@ -99,6 +99,7 @@ node default {
   include workstation::alsamixer
   include workstation::x11::dwm
 
+  include workstation::programming::hacking
   include workstation::programming::python
   include workstation::programming::latex
   include workstation::programming::virtualisation
