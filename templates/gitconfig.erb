@@ -7,3 +7,11 @@
   contributors = shortlog --summary --numbered
   remotes = remote -v
   tags = tag -l
+
+<% @urls.each do |url_rewritten, url_insteadof| %>
+[url "<%= url_rewritten %>"]
+  insteadOf = <%= url_insteadof %>
+<% end %>
+
+[credential]
+    helper = cache --timeout=28800
