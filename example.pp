@@ -71,10 +71,21 @@ node default {
     ]
   }
 
-  workstation::bash::rc { [
-    'PS1="\W \$ "',
-    'alias ls="ls -F"',
-    'alias ll="ls -lah"'
+  workstation::bash::rc {
+    'PS1="\W \$ "':
+  }
+
+  workstation::bash::alias { [
+    'ls="ls -F"',
+    'll="ls -lah"',
+    'emacs="emacs --maximized"'
+  ]: }
+
+  workstation::bash::alias { [
+    'doc="cd ~/document/"',
+    'prog="cd ~/program/"',
+    'embla="cd ~/program/embla/"',
+    'www="cd ~/www/"',
   ]: }
 
   class { 'workstation::multimedia::wget':
