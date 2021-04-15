@@ -9,10 +9,22 @@ node default {
     ]
   }
 
+  if defined('workstation::private') {
+    include workstation::private
+
+    if $workstation::private::password {
+      $password = $workstation::private::password
+    }
+  }
+
+  if $password == undef {
+    $password = 'default'
+  }
+
   class { 'workstation':
     username => 'lognoz',
-    password => 'default',
-    timezone => 'America/New_York'
+    timezone => 'America/New_York',
+    password => $password
   }
 
   class { 'workstation::graphic':
@@ -29,7 +41,11 @@ node default {
 
   class { 'workstation::user::git':
     username  => 'Marc-Antoine Loignon',
-    email => 'developer@lognoz.org'
+    email => 'developer@lognoz.org',
+    urls => {
+      'https://lognoz@github.com' => 'https://github.com',
+      'https://marcloignon@gitlab.com' => 'https://gitlab.com',
+    }
   }
 
   class { 'workstation::user::vim':
@@ -49,7 +65,6 @@ node default {
       '/download/wget',
       '/document',
       '/document/org',
-      '/music',
       '/program',
       '/video',
       '/video/youtube'
