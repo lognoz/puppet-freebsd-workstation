@@ -13,6 +13,10 @@
 #     Content of git user email.
 #     Default: undef
 #
+#   [*url*]
+#     Hash of git url to be rewritten.
+#     Default: undef
+#
 # Requires:
 #   Class workstation
 #
@@ -24,7 +28,8 @@
 #
 class workstation::user::git (
   String $username = undef,
-  String $email = undef
+  String $email = undef,
+  Variant[Hash, Undef] $urls = undef
 ) {
   # Make sure this subclasses is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
