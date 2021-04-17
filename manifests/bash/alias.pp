@@ -12,7 +12,7 @@
 #
 # Sample Usage:
 #   workstation::bash::alias {
-#     'alias ls="ls -F"'
+#     'ls="ls -F"'
 #   }
 #
 define workstation::bash::alias (

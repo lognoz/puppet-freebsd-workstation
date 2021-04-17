@@ -16,9 +16,11 @@ class workstation::multimedia::torrent (
     include workstation
   }
 
-  package { 'transmission-cli': }
+  package {
+    'transmission-cli':
+  }
 
-  workstation::bash::rc {
+  workstation::bash::alias {
     "torrent='transmission-cli --download-dir ~/${directory}'":
   }
 }
