@@ -119,7 +119,7 @@ node default {
   include workstation::gnu
   include workstation::doas
   include workstation::sudo
-  include workstation::system
+  include workstation::optimization
   include workstation::security
   include workstation::package
   include workstation::alsamixer
