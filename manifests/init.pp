@@ -17,6 +17,8 @@ class workstation (
   String $username = undef,
   String $password = undef,
   String $timezone = undef,
+  String $owner_name = undef,
+  String $owner_email = undef,
   String $root = '/usr/local/etc/puppet/modules/workstation/',
   Variant[String, Undef] $shell = undef
 ) {
@@ -60,17 +62,6 @@ class workstation (
     timezone => $timezone
   }
 
-  user { $username:
-    ensure     => present,
-    managehome => true,
-    shell      => $processor,
-    comment    => $username,
-    gid        => $username,
-    home       => $home,
-    name       => $username,
-    require    => [ Group[$username] ]
-  }
-
   group { $username:
     ensure => present,
     name   => $username,
@@ -82,10 +73,26 @@ class workstation (
 
   user { 'root':
     ensure   => present,
-    password => $hash
+    password => $hash,
+    shell => $processor
   }
 
-  User[$username] {
-    password => $hash
+  if !defined(User[$username]){
+    user { $username:
+      ensure     => present,
+      managehome => true,
+      shell      => $processor,
+      comment    => $username,
+      gid        => $username,
+      home       => $home,
+      name       => $username,
+      password   => $hash,
+      require    => [ Group[$username] ]
+    }
+  } else {
+    user { $username:
+      ensure   => present,
+      password => $hash
+    }
   }
 }
