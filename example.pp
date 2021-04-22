@@ -23,6 +23,8 @@ node default {
 
   class { 'workstation':
     username => 'lognoz',
+    owner_name => 'Marc-Antoine Loignon',
+    owner_email => 'developer@lognoz.org',
     timezone => 'America/New_York',
     password => $password
   }
