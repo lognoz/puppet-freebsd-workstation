@@ -1,7 +1,30 @@
+# Created by: Marc-Antoine Loignon <developer@lognoz.org>
 # See LICENSE file for copyright and license details.
 
-SHELL= /bin/sh
-SRC=   /usr/local/etc/puppet/modules/workstation
+MAINTAINER=	developer@lognoz.org
+COMMENT=	Puppet script for provisioning my FreeBSD desktop workstation
+
+PUPPET_DIR=	/usr/local/etc/puppet/modules
+SRC=	${PUPPET_DIR}/workstation
+
+FREEBSD_PACKAGES=	git puppet6
+PUPPET_PACKAGES=	puppet-archive puppet-nodejs puppet-php puppetlabs-apache puppetlabs-mysql \
+						puppetlabs-stdlib puppetlabs-vcsrepo saz-sudo saz-timezone rehan-wget
+
+ASSUME_YES= env ASSUME_ALWAYS_YES=yes
+
+
+all: execute
+
+dependencies: freebsd-dependencies puppet-dependencies
+
+check-requirements: check-privilege check-internet
+
+check-internet:
+	@if ! nc -zw1 fsf.org 443 > /dev/null 2>&1; then \
+		echo "This script must be run with internet connection."; \
+		exit 1; \
+	fi \
 
 check-privilege:
 	@if [ `whoami` != "root" ]; then \
@@ -17,25 +40,16 @@ refresh:
 		cp -r `pwd` ${SRC}; \
 	fi
 
-dependencies: check-privilege
-	puppet module install puppet-archive
-	puppet module install puppet-nodejs
-	puppet module install puppet-php
-	puppet module install puppetlabs-apache
-	puppet module install puppetlabs-mysql
-	puppet module install puppetlabs-stdlib
-	puppet module install puppetlabs-vcsrepo
-	puppet module install saz-sudo
-	puppet module install saz-timezone
-	puppet module install rehan-wget
+puppet-dependencies: check-privilege check-internet
+	@for i in ${PUPPET_PACKAGES} ; do \
+		puppet module install $${i} ; \
+	done
 
-provisioning: check-privilege
-	set ASSUME_ALWAYS_YES = yes
-	pkg update -f
-	pkg install git
-	pkg install puppet6
+freebsd-dependencies: check-privilege check-internet
+	@${ASSUME_YES} pkg bootstrap -f
+	@for package in ${FREEBSD_PACKAGES} ; do \
+		${ASSUME_YES} pkg install -f $${package} ; \
+	done
 
-execute: check-privilege refresh
-	puppet apply ${SRC}/example.pp
-
-.PHONY: execute dependencies provisioning refresh
+execute: check-requirements refresh
+	@puppet apply ${SRC}/example.pp
