@@ -41,8 +41,8 @@ refresh:
 	fi
 
 puppet-dependencies: check-privilege check-internet
-	@for i in ${PUPPET_PACKAGES} ; do \
-		puppet module install $${i} ; \
+	@for package in ${PUPPET_PACKAGES} ; do \
+		puppet module install $${package} ; \
 	done
 
 freebsd-dependencies: check-privilege check-internet
