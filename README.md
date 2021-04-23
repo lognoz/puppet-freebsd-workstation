@@ -353,25 +353,25 @@ the music folder.
 <details><summary><i>Show detail</i></summary>
 
 #### Variables:
-  [*desktop*] — Type: `string` Default: `/`,  
+  [*desktop*] — Type: `string` Default: `/`  
   The desktop user directory  
   
-  [*document*] — Type: `string` Default: `/document`,  
+  [*document*] — Type: `string` Default: `/document`  
   The document user directory  
   
-  [*download*] — Type: `string` Default: `/download`,  
+  [*download*] — Type: `string` Default: `/download`  
   The download user directory  
   
-  [*music*] — Type: `string` Default: `/music`,  
+  [*music*] — Type: `string` Default: `/music`  
   The music user directory  
   
-  [*picture*] — Type: `string` Default: `/picture`,  
+  [*picture*] — Type: `string` Default: `/picture`  
   The picture user directory  
   
-  [*public*] — Type: `string` Default: `/public`,  
+  [*public*] — Type: `string` Default: `/public`  
   The public user directory  
   
-  [*template*] — Type: `string` Default: `/template`,  
+  [*template*] — Type: `string` Default: `/template`  
   The template user directory  
   
   [*video*] — Type: `string` Default: `/video`  
@@ -393,6 +393,84 @@ class { 'workstation::user::directories':
     '/program',  
     '/video'  
   ]  
+}
+```
+
+</details>
+
+### [workstation::multimedia::torrent](manifests/multimedia/torrent.pp)
+  
+This initialize transmission package. This program is a lightweight,  
+command-line BitTorrent client with scripting capabilities.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Variables:
+  [*directory*] — Type: `string` Default: `download`  
+  String used as download directory for torrent file.  
+  
+#### Requires:
+  class { 'workstation::multimedia::torrent':  
+    directory => 'download/torrent'  
+  }  
+  
+#### Sample Usage:
+```puppet
+include workstation::multimedia:torrent
+```
+
+</details>
+
+### [workstation::multimedia::firefox](manifests/multimedia/firefox.pp)
+  
+This class initialize Firefox package. This program, also known as  
+Mozilla Firefox, is a free and open-source web browser developed by  
+the Mozilla Foundation and its subsidiary, the Mozilla Corporation.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Variables:
+  [*extensions*] — Type: `array` Default: `[]`  
+  List of extensions that you want to install in Firefox.  
+  
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+class { 'workstation::multimedia::firefox':  
+  extensions => [  
+    '3679754/ublock_origin-1.31.0-an+fx.xpi',  
+    '3679479/https_everywhere-2020.11.17-an+fx.xpi',  
+    '3690660/user_agent_switcher-1.4.1-an+fx.xpi',  
+    '3672658/decentraleyes-2.0.15-an+fx.xpi',  
+    '3682334/clearurls-1.20.0-an+fx.xpi',  
+    '3691752/noscript_security_suite-11.1.6-an+fx.xpi',  
+    '3724574/grammatik_und_rechtschreibprufung_languagetool-3.3.4-fx.xpi'  
+  ]  
+}
+```
+
+</details>
+
+### [workstation::multimedia::wget](manifests/multimedia/wget.pp)
+  
+This initialize wget package. This computer program that retrieves  
+content from web servers.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Variables:
+  [*directory*] — Type: `string` Default: `download`  
+  String used as download directory for torrent file.  
+  
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+class { 'workstation::multimedia::wget':  
+  directory => 'download/wget'  
 }
 ```
 
