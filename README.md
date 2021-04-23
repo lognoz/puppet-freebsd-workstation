@@ -2,7 +2,7 @@
 
 Puppet script for provisioning my FreeBSD desktop workstation.
 
-## Table of Content
+#### Table of Content
 - [Setup](#setup)
 - [Prerequisites](#prerequisites)
   - [System dependencies](#system-dependencies)
@@ -29,22 +29,22 @@ make dependencies
 
 ### System dependencies
 
-[Git](https://www.freshports.org/devel/git) <br/>
-Distributed source code management tool.
+[git](https://git-scm.com/) <br/>
+Distributed source code management tool
 
-[Puppet](https://www.freshports.org/sysutils/puppet6) <br/>
-Configuration management framework written in Ruby.
+[puppet6](https://puppet.com/docs/puppet/latest/puppet_index.html) <br/>
+Configuration management framework written in Ruby
 
 ### Puppet dependencies
 
 [puppet-archive](https://forge.puppet.com/modules/puppet/archive) <br/>
-Compressed archive file download and extraction with native types/providers for Windows and Unix.
+Compressed archive file download and extraction with native types/providers for Windows and Unix
 
 [puppet-nodejs](https://forge.puppet.com/modules/puppet/nodejs) <br/>
 Install Node.js package and npm package provider.
 
 [puppet-php](https://forge.puppet.com/modules/puppet/php) <br/>
-Generic PHP module that supports many platforms.
+Generic PHP module that supports many platforms
 
 [puppetlabs-apache](https://forge.puppet.com/modules/puppetlabs/apache) <br/>
 Installs, configures, and manages Apache virtual hosts, web services, and modules.
@@ -56,13 +56,13 @@ Installs, configures, and manages the MySQL service.
 Standard library of resources for Puppet modules.
 
 [puppetlabs-vcsrepo](https://forge.puppet.com/modules/puppetlabs/vcsrepo) <br/>
-Puppet module providing a type to manage repositories from various version control systems.
+Puppet module providing a type to manage repositories from various version control systems
+
+[rehan-wget](https://forge.puppet.com/modules/rehan/wget) <br/>
+Install, manage and configure wget and retrieve files using it
 
 [saz-sudo](https://forge.puppet.com/modules/saz/sudo) <br/>
-Manage sudo configuration via Puppet.
+Manage sudo configuration via Puppet
 
 [saz-timezone](https://forge.puppet.com/modules/saz/timezone) <br/>
 Manage timezone settings via Puppet
-
-[rehan-wget](https://forge.puppet.com/modules/rehan/wget) <br/>
-Install, manage and configure wget and retrieve files using it.
