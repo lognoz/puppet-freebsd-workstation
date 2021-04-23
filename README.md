@@ -220,6 +220,43 @@ include workstation::security
 
 </details>
 
+### [workstation::system](manifests/system.pp)
+  
+This module manages system configurations.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Variables:
+  [*path*] — Type: `string` Default: `undef`  
+  String use as path location to add content.  
+  
+  [*content*] — Type: `array` Default: `undef`  
+  List of lines to add to the path location.  
+  
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+workstation::system { 'Optimize boot loader':  
+  path => '/boot/loader.conf',  
+  content => [  
+    # Change boot time kernel tuning.  
+    'kern.ipc.shmseg = 1024',  
+    'kern.ipc.shmmni = 1024',  
+    'kern.maxproc = 100000',  
+  
+    # Configuring asynchronous I/O.  
+    'aio_load = "YES"',  
+  
+    # Enable thermal sensors.  
+    'coretemp_load="YES"'  
+  ]  
+}
+```
+
+</details>
+
 ### [workstation::alsamixer](manifests/alsamixer.pp)
   
 This class initialize alsamixer package. This program is a graphical  
@@ -282,6 +319,96 @@ This class sets FreeBSD package configurations.
 #### Sample Usage:
 ```puppet
 include workstation::package
+```
+
+</details>
+
+### [workstation::bash::rc](manifests/bash/rc.pp)
+  
+This module manages bashrc configurations.  
+  
+Parameters:  
+  [*content*]  
+    Content of configuration to append.  
+    Default: $title  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+workstation::bash::rc {  
+  'alias ls="ls -F"'  
+}
+```
+
+</details>
+
+### [workstation::bash::alias](manifests/bash/alias.pp)
+  
+This module manages bash aliases configurations.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Variables:
+  [*content*] — Type: `string|array` Default: `$title`  
+  Content of configuration to append.  
+  
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+workstation::bash::alias { [  
+  'ls="ls -F"',  
+  'll="ls -lah"',  
+  'emacs="emacs --maximized"'  
+]: }
+```
+
+</details>
+
+### [workstation::bash::init](manifests/bash/init.pp)
+  
+This class install bash and some useful configurations.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Variables:
+  [*files*] — Array: `array` Default: `[]`  
+  List of files related to bash that need to be created.  
+  
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+include workstation::bash::init
+```
+
+</details>
+
+### [workstation::x11:conf](manifests/x11/conf.pp)
+  
+This module manages Xorg configurations.  
+  
+Parameters:  
+  [*content*]  
+    Content of configuration to append.  
+    Default: $title  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+workstation::x11::conf {  
+  'xmodmap ~/.Xmodmap'  
+}
 ```
 
 </details>
@@ -506,6 +633,23 @@ over 1000 other video hosting websites.
 class { 'workstation::multimedia::youtube_dl':  
   directory => 'video/youtube'  
 }
+```
+
+</details>
+
+### [workstation::multimedia::graphic](manifests/multimedia/graphic.pp)
+  
+This class install *Gimp*, *Blender*, *VLC* and others useful  
+graphic tools.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+include workstation::multimedia:graphic
 ```
 
 </details>
