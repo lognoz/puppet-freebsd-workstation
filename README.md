@@ -161,6 +161,23 @@ include workstation::doas
 
 </details>
 
+### [workstation::optimization](manifests/optimization.pp)
+  
+This class install some programs and change system configurations to  
+make FreeBSD usable as a desktop station.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+include workstation::optimization
+```
+
+</details>
+
 ### [workstation::keyboard](manifests/keyboard.pp)
   
 This class sets keyboard in xorg. For each input device (keyboard,  
@@ -183,6 +200,22 @@ mouse, etc.) it need an InputClass section.
 class { 'workstation::keyboard':  
   keyboard => 'us,ca'  
 }
+```
+
+</details>
+
+### [workstation::security](manifests/security.pp)
+  
+This class install improve the system security.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+include workstation::security
 ```
 
 </details>
@@ -400,7 +433,7 @@ class { 'workstation::user::directories':
 
 ### [workstation::multimedia::torrent](manifests/multimedia/torrent.pp)
   
-This initialize transmission package. This program is a lightweight,  
+This class initialize transmission package. This program is a lightweight,  
 command-line BitTorrent client with scripting capabilities.  
   
 <details><summary><i>Show detail</i></summary>
@@ -410,13 +443,13 @@ command-line BitTorrent client with scripting capabilities.
   String used as download directory for torrent file.  
   
 #### Requires:
-  class { 'workstation::multimedia::torrent':  
-    directory => 'download/torrent'  
-  }  
+  Class workstation  
   
 #### Sample Usage:
 ```puppet
-include workstation::multimedia:torrent
+class { 'workstation::multimedia::torrent':  
+  directory => 'download/torrent'  
+}
 ```
 
 </details>
@@ -448,6 +481,30 @@ class { 'workstation::multimedia::firefox':
     '3691752/noscript_security_suite-11.1.6-an+fx.xpi',  
     '3724574/grammatik_und_rechtschreibprufung_languagetool-3.3.4-fx.xpi'  
   ]  
+}
+```
+
+</details>
+
+### [workstation::multimedia::youtube_dl](manifests/multimedia/youtube_dl.pp)
+  
+This class initialize youtube-dl package. This program is an  
+open-source download manager for video and audio from YouTube and  
+over 1000 other video hosting websites.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Variables:
+  [*directory*] — Type: `string` Default: `video`  
+  String used as download directory for torrent file.  
+  
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+class { 'workstation::multimedia::youtube_dl':  
+  directory => 'video/youtube'  
 }
 ```
 
