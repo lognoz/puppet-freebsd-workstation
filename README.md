@@ -70,6 +70,23 @@ Manage timezone settings via Puppet
 
 ## Manifests
 
+### [workstation::gnu](manifests/gnu.pp)
+  
+This class install GNU utils and libraries like *gmake*, *ripgrep*,  
+*gls*, *gcc*, etc.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+include workstation::gnu
+```
+
+</details>
+
 ### [workstation::powerd](manifests/powerd.pp)
   
 This class initialize powerd package. This program utility monitors  
@@ -269,6 +286,30 @@ include workstation::x11::xorg
 
 </details>
 
+### [workstation::user:emacs](manifests/user/emacs.pp)
+  
+This class initialize Emacs package. This program is a highly  
+customizable editor indeed, it has been customized to the point  
+where it is more like an operating system than an editor!  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Variables:
+  [*source*] — Type: `string` Default: `undef`  
+  The git repository of Emacs configuration.  
+  
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+class { 'workstation::user::emacs':  
+  source => 'https://github.com/lognoz/embla'  
+}
+```
+
+</details>
+
 ### [workstation::user::git](manifests/user/git.pp)
   
 This class initialize git package. This program is a distributed  
@@ -302,3 +343,59 @@ class { 'workstation::user::git':
 ```
 
 </details>
+
+### [workstation::user::directories](manifests/user/directories.pp)
+  
+This class manages custom directories and xdg-user-dirs, a tool to  
+help manage well known user directories like the desktop folder and  
+the music folder.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Variables:
+  [*desktop*] — Type: `string` Default: `/`,  
+  The desktop user directory  
+  
+  [*document*] — Type: `string` Default: `/document`,  
+  The document user directory  
+  
+  [*download*] — Type: `string` Default: `/download`,  
+  The download user directory  
+  
+  [*music*] — Type: `string` Default: `/music`,  
+  The music user directory  
+  
+  [*picture*] — Type: `string` Default: `/picture`,  
+  The picture user directory  
+  
+  [*public*] — Type: `string` Default: `/public`,  
+  The public user directory  
+  
+  [*template*] — Type: `string` Default: `/template`,  
+  The template user directory  
+  
+  [*video*] — Type: `string` Default: `/video`  
+  The video user directory  
+  
+  [*directories*] — Type: `array` Default: `[]`  
+  The list of directories that need to be created  
+  
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+class { 'workstation::user::directories':  
+  download => '/download/browser',  
+  directories => [  
+    '/download',  
+    '/document',  
+    '/program',  
+    '/video'  
+  ]  
+}
+```
+
+</details>
+
+
