@@ -87,6 +87,77 @@ include workstation::gnu
 
 </details>
 
+### [workstation::language](manifests/language.pp)
+  
+This class help to manage multiple languages keyboard and language  
+tool program.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Variables:
+  [*aspell*] — Type: `string` Default: `undef`  
+  Array of languages to install via Freebsd ports. Make sure  
+  to have the right package name before to call this class.  
+  
+  [*directory*] — Type: `string` Default: `~/.share`  
+  The location on where to install Language Tool package.  
+  
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+class { 'workstation::language':  
+  aspell => ['en','fr']  
+}
+```
+
+</details>
+
+### [workstation](manifests/init.pp)
+  
+This class sets root and user for FreeBSD systems. Make sure to load  
+this file before any workstation subclasses.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Variables:
+  [*username*] — Type: `string` Default: `undef`  
+  String used to create user and its home directory.  
+  
+  [*password*] — Type: `string` Default: `undef`  
+  String used as user and root password.  
+  
+  [*timezone*] — Type: `string` Default: `undef`  
+  String used as timezone reference.  
+  
+  [*owner_name*] — Type: `string` Default: `undef`  
+  String used as computer owner name.  
+  
+  [*owner_email*] — Type: `string` Default: `undef`  
+  String used as computer owner email.  
+  
+  [*shell*] — Type: `string|undef` Default: `undef`  
+  String used as command processor path. If you use zsh on FreeBSD,  
+  you will send /usr/bin/zsh. By default, this class will install  
+  and use bash if $shell is undefined.  
+  
+  [*root*] — Type: `string` Default: `/usr/local/etc/puppet/modules/workstation/`  
+  The reference on where the workstation module is located.  
+  
+#### Sample Usage:
+```puppet
+class { 'workstation':  
+  username => 'lognoz',  
+  owner_name => 'Marc-Antoine Loignon',  
+  owner_email => 'developer@lognoz.org',  
+  timezone => 'America/New_York',  
+  password => $password  
+}
+```
+
+</details>
+
 ### [workstation::powerd](manifests/powerd.pp)
   
 This class initialize powerd package. This program utility monitors  
@@ -327,20 +398,19 @@ include workstation::package
   
 This module manages bashrc configurations.  
   
-Parameters:  
-  [*content*]  
-    Content of configuration to append.  
-    Default: $title  
-  
 <details><summary><i>Show detail</i></summary>
 
+#### Variables:
+  [*content*] — Type: `string|array` Default: `$title`  
+  Content of configuration to append.  
+  
 #### Requires:
   Class workstation  
   
 #### Sample Usage:
 ```puppet
 workstation::bash::rc {  
-  'alias ls="ls -F"'  
+  'alias ls="ls -F"':  
 }
 ```
 
@@ -395,9 +465,8 @@ include workstation::bash::init
 This module manages Xorg configurations.  
   
 Parameters:  
-  [*content*]  
-    Content of configuration to append.  
-    Default: $title  
+  [*content*] — Type: `string|array` Default: `$title`  
+  Content of configuration to append to xinitrc.  
   
 <details><summary><i>Show detail</i></summary>
 
@@ -407,7 +476,7 @@ Parameters:
 #### Sample Usage:
 ```puppet
 workstation::x11::conf {  
-  'xmodmap ~/.Xmodmap'  
+  'xmodmap ~/.Xmodmap':  
 }
 ```
 
@@ -442,6 +511,30 @@ is the most popular display server among Linux and BSD users.
 #### Sample Usage:
 ```puppet
 include workstation::x11::xorg
+```
+
+</details>
+
+### [workstation::user:vim](manifests/user/vim.pp)
+  
+This class initialize Vim package. This program is a highly  
+configurable text editor built to make creating and changing any  
+kind of text very efficient.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Variables:
+  [*source*] — Type: `string` Default: `undef`  
+  The git repository of vim configuration.  
+  
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+class { 'workstation::user::vim':  
+  source => 'https://github.com/lognoz/vimrc'  
+}
 ```
 
 </details>
