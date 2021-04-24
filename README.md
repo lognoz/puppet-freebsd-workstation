@@ -508,6 +508,140 @@ include workstation::powerd
 
 </details>
 
+### [workstation::programming::latex](manifests/programming/latex.pp)
+  
+This class initialize LaTeX programming language.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+include workstation::programming::latex
+```
+
+</details>
+
+### [workstation::programming::lisp::clisp](manifests/programming/lisp/clisp.pp)
+  
+This class initialize Common Lisp programming language.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+include workstation::programming::lisp::clisp
+```
+
+</details>
+
+### [workstation::programming::python](manifests/programming/python.pp)
+  
+This class initialize Python programming language.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+include workstation::programming::python
+```
+
+</details>
+
+### [workstation::programming::virtualisation](manifests/programming/virtualisation.pp)
+  
+This class initialize virtualisation program like *Vagrant*,  
+*Docker* and *Virtualbox*.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+include workstation::programming:virtualisation
+```
+
+</details>
+
+### [workstation::programming::web::apache](manifests/programming/web/apache.pp)
+  
+This class initialize Apache server.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+include workstation::programming::web:apache
+```
+
+</details>
+
+### [workstation::programming::web::mysql](manifests/programming/web/mysql.pp)
+  
+This class initialize MySQL database server.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+include workstation::programming::web:mysql
+```
+
+</details>
+
+### [workstation::programming::web::npm](manifests/programming/web/npm.pp)
+  
+This class initialize npm package. This program is a package manager  
+for the JavaScript programming language.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Variables:
+  [*packages*] — Type: `array` Default: `undef`  
+  List of packages to be install globally.  
+  
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+include workstation::programming::web:npm
+```
+
+</details>
+
+### [workstation::programming::web::php](manifests/programming/web/php.pp)
+  
+This class initialize PHP programming language.  
+  
+<details><summary><i>Show detail</i></summary>
+
+#### Requires:
+  Class workstation  
+  
+#### Sample Usage:
+```puppet
+include workstation::programming::web:php
+```
+
+</details>
+
 ### [workstation::security](manifests/security.pp)
   
 This class install improve the system security.  
