@@ -96,7 +96,7 @@ def get_manifest_documentation(path):
 
         comments += line + '\n'
 
-def get_manifest_to_markdown(comments, path):
+def get_manifest_to_markdown(container, documentation, path):
     """
     Convert documentation header in manifest file in markdown.
     """
@@ -113,7 +113,7 @@ def get_manifest_to_markdown(comments, path):
     regex_detail = re.compile(r'^Variables:|^Requires:|^Sample Usage:')
     regex_sample_usage = re.compile(r'^Sample Usage:')
 
-    for line in comments.split('\n'):
+    for line in documentation.split('\n'):
         if regex_title.search(line):
             is_title_found = True
             title = regex_title.sub('', line)
@@ -157,13 +157,16 @@ def get_manifest_to_markdown(comments, path):
 
     if not is_title_found:
         print('No title found in ' + path)
-        return
+        return container
 
     if not is_description_found:
         print('No description found in ' + path)
-        return
+        return container
 
-    return content + '\n\n'
+    container['manifests'] += content + '\n\n';
+    container['table-of-contents'] += '  - [' + title + '](#' + title.replace('::', '') + ')\n'
+
+    return container
 
 def get_space_before(line):
     """
@@ -193,14 +196,14 @@ def get_manifests_content():
     """
     Get content by files located in manifests directory.
     """
-    content = ''
+    content = {
+        'manifests': '',
+        'table-of-contents': ''
+    }
 
     for path in get_manifests_files():
-        comments = get_manifest_documentation(path)
-        manifest = get_manifest_to_markdown(comments, path)
-
-        if manifest:
-            content += manifest
+        documentation = get_manifest_documentation(path)
+        content = get_manifest_to_markdown(content, documentation, path)
 
     return content
 
@@ -290,7 +293,9 @@ def replace_dependencies_in_documentation(system_dependencies, puppet_dependenci
         elif line.startswith('[puppet-dependencies]'):
             print(puppet_dependencies)
         elif line.startswith('[manifests-content]'):
-            print(manifests_content)
+            print(manifests_content['manifests'])
+        elif line.startswith('[manifests-table-of-contents]'):
+            print(manifests_content['table-of-contents'].rstrip())
         else:
             print(line)
 
