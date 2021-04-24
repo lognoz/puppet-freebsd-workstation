@@ -64,10 +64,13 @@ def get_puppet_dependencies(dependencies):
     Get puppet dependencies and its informations.
     """
     path = 'script/puppet_dependencies.json'
-    data = get_puppet_dependencies_json(path)
+    json_content = get_puppet_dependencies_json(path)
+    data = {}
 
     for dependency in dependencies:
-        if not data[dependency]:
+        if dependency in json_content:
+            data[dependency] = json_content[dependency]
+        else:
             data[dependency] = get_puppet_information_by_dependency(dependency)
 
     with open(path, "w") as f:
