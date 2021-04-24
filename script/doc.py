@@ -164,7 +164,7 @@ def get_manifest_to_markdown(container, documentation, path):
         return container
 
     container['manifests'] += content + '\n\n';
-    container['table-of-contents'] += '  - [' + title + '](#' + title.replace('::', '') + ')\n'
+    container['table-of-contents'] += '- [' + title + '](#' + title.replace('::', '') + ')\n'
 
     return container
 
@@ -295,7 +295,7 @@ def replace_dependencies_in_documentation(system_dependencies, puppet_dependenci
         elif line.startswith('[manifests-content]'):
             print(manifests_content['manifests'])
         elif line.startswith('[manifests-table-of-contents]'):
-            print(manifests_content['table-of-contents'].rstrip())
+            print(manifests_content['table-of-contents'])
         else:
             print(line)
 

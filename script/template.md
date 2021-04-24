@@ -10,7 +10,6 @@ Puppet script for provisioning my FreeBSD desktop workstation.
   - [System dependencies](#system-dependencies)
   - [Puppet dependencies](#puppet-dependencies)
 - [Manifests](#manifests)
-[manifests-table-of-contents]
 - [Limitations](#limitations)
 
 ## Setup
@@ -42,6 +41,8 @@ make dependencies
 
 ## Manifests
 
+#### List of available manifests
+[manifests-table-of-contents]
 [manifests-content]
 
 ## Limitations
