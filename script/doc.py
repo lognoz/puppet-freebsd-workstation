@@ -6,7 +6,9 @@ See the file 'LICENSE' for copying permission
 """
 
 import re
+import json
 import glob2
+import os.path
 import fileinput
 import subprocess
 import urllib.request
@@ -47,18 +49,36 @@ def get_puppet_information_by_dependency(package):
             'www': host+path
         }
 
+def get_puppet_dependencies_json(path):
+    """
+    Get puppet dependencies informations in json file.
+    """
+    if os.path.exists(path):
+        with open(path, "r") as f:
+            return json.load(f)
+
+    return {}
+
 def get_puppet_dependencies(dependencies):
     """
-    Get Puppet dependencies and its informations.
+    Get puppet dependencies and its informations.
     """
-    result = {}
+    path = 'script/puppet_dependencies.json'
+    data = get_puppet_dependencies_json(path)
 
     for dependency in dependencies:
-        result[dependency] = get_puppet_information_by_dependency(dependency)
+        if not data[dependency]:
+            data[dependency] = get_puppet_information_by_dependency(dependency)
 
-    return result
+    with open(path, "w") as f:
+        json.dump(data, f)
+
+    return data
 
 def get_manifest_documentation(path):
+    """
+    Get documentation header in manifest file.
+    """
     comments = ''
 
     for line in open(path):
@@ -74,6 +94,9 @@ def get_manifest_documentation(path):
         comments += line + '\n'
 
 def get_manifest_to_markdown(comments, path):
+    """
+    Convert documentation header in manifest file in markdown.
+    """
     content = ''
     line_break = '  '
     space_to_remove = 0
@@ -137,6 +160,9 @@ def get_manifest_to_markdown(comments, path):
     return content + '\n\n'
 
 def get_space_before(line):
+    """
+    Get all spaces before characters in line.
+    """
     space_before_string = 0
     for i in line:
         if i == ' ' :
@@ -145,6 +171,9 @@ def get_space_before(line):
             return space_before_string
 
 def get_manifests_files():
+    """
+    Get all files located in manifests directory.
+    """
     main_class = 'manifests/init.pp'
     files = glob2.glob('manifests/**/*pp')
 
@@ -155,6 +184,9 @@ def get_manifests_files():
     return files
 
 def get_manifests_content():
+    """
+    Get content by files located in manifests directory.
+    """
     content = ''
 
     for path in get_manifests_files():
@@ -261,13 +293,11 @@ def main():
     This function is the main executor.
     """
     dependencies = get_dependencies_in_makefile()
-
     system_dependencies = get_system_dependencies(dependencies['freebsd'])
     puppet_dependencies = get_puppet_dependencies(dependencies['puppet'])
 
     system_dependencies_content = get_prerequisites_content(system_dependencies)
     puppet_dependencies_content = get_prerequisites_content(puppet_dependencies)
-
     manifests_content = get_manifests_content()
 
     replace_dependencies_in_documentation(
