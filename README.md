@@ -1,13 +1,54 @@
 # Puppet FreeBSD Workstation
 
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+
 Puppet script for provisioning my FreeBSD desktop workstation.
 
-#### Table of content
+#### Table of Contents
 - [Setup](#setup)
 - [Prerequisites](#prerequisites)
   - [System dependencies](#system-dependencies)
   - [Puppet dependencies](#puppet-dependencies)
 - [Manifests](#manifests)
+  - [workstation](#workstation)
+  - [workstation::alsamixer](#workstationalsamixer)
+  - [workstation::bash::alias](#workstationbashalias)
+  - [workstation::bash::init](#workstationbashinit)
+  - [workstation::bash::rc](#workstationbashrc)
+  - [workstation::doas](#workstationdoas)
+  - [workstation::fonts](#workstationfonts)
+  - [workstation::gnu](#workstationgnu)
+  - [workstation::graphic](#workstationgraphic)
+  - [workstation::keyboard](#workstationkeyboard)
+  - [workstation::language](#workstationlanguage)
+  - [workstation::multimedia::firefox](#workstationmultimediafirefox)
+  - [workstation::multimedia::graphic](#workstationmultimediagraphic)
+  - [workstation::multimedia::torrent](#workstationmultimediatorrent)
+  - [workstation::multimedia::wget](#workstationmultimediawget)
+  - [workstation::multimedia::youtube_dl](#workstationmultimediayoutube_dl)
+  - [workstation::optimization](#workstationoptimization)
+  - [workstation::package](#workstationpackage)
+  - [workstation::powerd](#workstationpowerd)
+  - [workstation::programming::hacking](#workstationprogramminghacking)
+  - [workstation::programming::latex](#workstationprogramminglatex)
+  - [workstation::programming::lisp::clisp](#workstationprogramminglispclisp)
+  - [workstation::programming::python](#workstationprogrammingpython)
+  - [workstation::programming::virtualisation](#workstationprogrammingvirtualisation)
+  - [workstation::programming::web::apache](#workstationprogrammingwebapache)
+  - [workstation::programming::web::mysql](#workstationprogrammingwebmysql)
+  - [workstation::programming::web::npm](#workstationprogrammingwebnpm)
+  - [workstation::programming::web::php](#workstationprogrammingwebphp)
+  - [workstation::security](#workstationsecurity)
+  - [workstation::sudo](#workstationsudo)
+  - [workstation::system](#workstationsystem)
+  - [workstation::user::directories](#workstationuserdirectories)
+  - [workstation::user::emacs](#workstationuseremacs)
+  - [workstation::user::git](#workstationusergit)
+  - [workstation::user::vim](#workstationuservim)
+  - [workstation::x11::conf](#workstationx11conf)
+  - [workstation::x11::dwm](#workstationx11dwm)
+  - [workstation::x11::xorg](#workstationx11xorg)
+- [Limitations](#limitations)
 
 ## Setup
 
@@ -783,7 +824,7 @@ class { 'workstation::user::directories':
 
 </details>
 
-### [workstation::user:emacs](manifests/user/emacs.pp)
+### [workstation::user::emacs](manifests/user/emacs.pp)
 
 This class initialize Emacs package. This program is a highly  
 customizable editor indeed, it has been customized to the point  
@@ -841,7 +882,7 @@ class { 'workstation::user::git':
 
 </details>
 
-### [workstation::user:vim](manifests/user/vim.pp)
+### [workstation::user::vim](manifests/user/vim.pp)
 
 This class initialize Vim package. This program is a highly  
 configurable text editor built to make creating and changing any  
@@ -865,7 +906,7 @@ class { 'workstation::user::vim':
 
 </details>
 
-### [workstation::x11:conf](manifests/x11/conf.pp)
+### [workstation::x11::conf](manifests/x11/conf.pp)
 
 This module manages Xorg configurations.  
 
@@ -887,7 +928,7 @@ workstation::x11::conf {
 
 </details>
 
-### [workstation::x11:dwm](manifests/x11/dwm.pp)
+### [workstation::x11::dwm](manifests/x11/dwm.pp)
 
 This module manages Dynamic Windows Manager installation.  
 
@@ -921,3 +962,7 @@ include workstation::x11::xorg
 </details>
 
 
+
+## Limitations
+
+This module is only usable with FreeBSD.
