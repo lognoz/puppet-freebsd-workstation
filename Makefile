@@ -53,3 +53,6 @@ freebsd-dependencies: check-privilege check-internet
 
 execute: check-requirements refresh
 	@puppet apply ${SRC}/example.pp
+
+documentation:
+	@python3.7 script/doc.py
