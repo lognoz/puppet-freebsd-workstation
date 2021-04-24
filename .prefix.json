@@ -1,7 +1,9 @@
 {
   "/Makefile": "Make: ",
+  "/README.md": "Doc: ",
   "/example.pp": "Example: ",
   "/files/": "Files: ",
+  "/script/": "Script: ",
   "/manifests/": "Manifests: ",
   "/templates/": "Templates: ",
   "/": "Build: "
