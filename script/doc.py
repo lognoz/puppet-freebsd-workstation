@@ -140,7 +140,10 @@ def get_manifest_to_markdown(comments, path):
             if is_sample_usage and not space_to_remove:
                 space_to_remove = get_space_before(line)
 
-            content += line[space_to_remove:] + line_break + '\n'
+            if len(line) == 0:
+                content += '\n'
+            else:
+                content += line[space_to_remove:] + line_break + '\n'
 
 
     if is_sample_usage:
