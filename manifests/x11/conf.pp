@@ -2,17 +2,16 @@
 #
 # This module manages Xorg configurations.
 #
-# Parameters:
-#   [*content*]
-#     Content of configuration to append.
-#     Default: $title
+# Variables:
+#   [*content*] — Type: `string|array` Default: `$title`
+#   Content of configuration to append to xinitrc.
 #
 # Requires:
 #   Class workstation
 #
 # Sample Usage:
 #   workstation::x11::conf {
-#     'xmodmap ~/.Xmodmap'
+#     'xmodmap ~/.Xmodmap':
 #   }
 #
 define workstation::x11::conf (

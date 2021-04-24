@@ -1,5 +1,8 @@
 # Class: workstation::gnu
 #
+# This class install GNU utils and libraries like *gmake*, *ripgrep*,
+# *gls*, *gcc*, etc.
+#
 # Requires:
 #   Class workstation
 #

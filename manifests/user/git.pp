@@ -4,18 +4,15 @@
 # version-control system for tracking changes in source code during
 # software development.
 #
-# Parameters:
-#   [*username*]
-#     Content of git user name.
-#     Default: undef
+# Variables:
+#   [*username*] — Type: `string` Default: `undef`
+#   Content of git user name.
 #
-#   [*email*]
-#     Content of git user email.
-#     Default: undef
+#   [*email*] — Type: `string` Default: `undef`
+#   Content of git user email.
 #
-#   [*url*]
-#     Hash of git url to be rewritten.
-#     Default: undef
+#   [*url*] — Type: `hash|undef` Default: `undef`
+#   Hash of git url to be rewritten.
 #
 # Requires:
 #   Class workstation
@@ -24,6 +21,9 @@
 #   class { 'workstation::user::git':
 #     username  => 'Marc-Antoine Loignon',
 #     email => 'developer@lognoz.org'
+#     urls => {
+#       'https://lognoz@github.com' => 'https://github.com',
+#     }
 #   }
 #
 class workstation::user::git (

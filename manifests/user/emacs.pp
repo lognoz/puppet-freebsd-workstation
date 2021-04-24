@@ -1,5 +1,13 @@
 # Class: workstation::user:emacs
 #
+# This class initialize Emacs package. This program is a highly
+# customizable editor indeed, it has been customized to the point
+# where it is more like an operating system than an editor!
+#
+# Variables:
+#   [*source*] — Type: `string` Default: `undef`
+#   The git repository of Emacs configuration.
+#
 # Requires:
 #   Class workstation
 #

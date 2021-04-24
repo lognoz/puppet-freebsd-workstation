@@ -1,5 +1,7 @@
 # Class: workstation::programming::hacking
 #
+# This class install most useful hacking tools.
+#
 # Requires:
 #   Class workstation
 #

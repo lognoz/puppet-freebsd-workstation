@@ -1,5 +1,8 @@
 # Class: workstation::optimization
 #
+# This class install some programs and change system configurations to
+# make FreeBSD usable as a desktop station.
+#
 # Requires:
 #   Class workstation
 #

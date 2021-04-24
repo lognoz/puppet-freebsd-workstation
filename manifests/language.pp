@@ -1,10 +1,18 @@
 # Class: workstation::language
 #
-# Parameters:
-#   [*aspell*]
-#     Array of languages to install via Freebsd ports. Make sure
-#     to have the right package name before to call this class.
-#     Default: undef
+# This class help to manage multiple languages keyboard and language
+# tool program.
+#
+# Variables:
+#   [*aspell*] — Type: `string` Default: `undef`
+#   Array of languages to install via Freebsd ports. Make sure
+#   to have the right package name before to call this class.
+#
+#   [*directory*] — Type: `string` Default: `~/.share`
+#   The location on where to install Language Tool package.
+#
+# Requires:
+#   Class workstation
 #
 # Sample Usage:
 #   class { 'workstation::language':

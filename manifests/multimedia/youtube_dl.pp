@@ -1,10 +1,20 @@
 # Class: workstation::multimedia::youtube_dl
 #
+# This class initialize youtube-dl package. This program is an
+# open-source download manager for video and audio from YouTube and
+# over 1000 other video hosting websites.
+#
+# Variables:
+#   [*directory*] — Type: `string` Default: `video`
+#   String used as download directory for torrent file.
+#
 # Requires:
 #   Class workstation
 #
 # Sample Usage:
-#   include workstation::multimedia::youtube_dl
+#   class { 'workstation::multimedia::youtube_dl':
+#     directory => 'video/youtube'
+#   }
 #
 class workstation::multimedia::youtube_dl (
   String $directory = 'video'

@@ -1,10 +1,50 @@
 # Class: workstation::user::directories
 #
+# This class manages custom directories and xdg-user-dirs, a tool to
+# help manage well known user directories like the desktop folder and
+# the music folder.
+#
+# Variables:
+#   [*desktop*] — Type: `string` Default: `/`
+#   The desktop user directory
+#
+#   [*document*] — Type: `string` Default: `/document`
+#   The document user directory
+#
+#   [*download*] — Type: `string` Default: `/download`
+#   The download user directory
+#
+#   [*music*] — Type: `string` Default: `/music`
+#   The music user directory
+#
+#   [*picture*] — Type: `string` Default: `/picture`
+#   The picture user directory
+#
+#   [*public*] — Type: `string` Default: `/public`
+#   The public user directory
+#
+#   [*template*] — Type: `string` Default: `/template`
+#   The template user directory
+#
+#   [*video*] — Type: `string` Default: `/video`
+#   The video user directory
+#
+#   [*directories*] — Type: `array` Default: `[]`
+#   The list of directories that need to be created
+#
 # Requires:
 #   Class workstation
 #
 # Sample Usage:
-#   include workstation::user::directories
+#  class { 'workstation::user::directories':
+#    download => '/download/browser',
+#    directories => [
+#      '/download',
+#      '/document',
+#      '/program',
+#      '/video'
+#    ]
+#  }
 #
 class workstation::user::directories (
   String $desktop  = '/',

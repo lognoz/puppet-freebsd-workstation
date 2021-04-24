@@ -1,5 +1,7 @@
 # Class: workstation::programming::web::mysql
 #
+# This class initialize MySQL database server.
+#
 # Requires:
 #   Class workstation
 #

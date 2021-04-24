@@ -1,5 +1,8 @@
 # Class: workstation::multimedia::graphic
 #
+# This class install *Gimp*, *Blender*, *VLC* and others useful
+# graphic tools.
+#
 # Requires:
 #   Class workstation
 #

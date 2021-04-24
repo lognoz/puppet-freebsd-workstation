@@ -1,5 +1,7 @@
 # Class: workstation::programming::web::apache
 #
+# This class initialize Apache server.
+#
 # Requires:
 #   Class workstation
 #

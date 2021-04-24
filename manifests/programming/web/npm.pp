@@ -1,5 +1,12 @@
 # Class: workstation::programming::web::npm
 #
+# This class initialize npm package. This program is a package manager
+# for the JavaScript programming language.
+#
+# Variables:
+#   [*packages*] — Type: `array` Default: `undef`
+#   List of packages to be install globally.
+#
 # Requires:
 #   Class workstation
 #
@@ -7,7 +14,7 @@
 #   include workstation::programming::web:npm
 #
 class workstation::programming::web::npm (
-  $packages = [
+  Array $packages = [
     'grunt-cli',
     'psd-cli',
     'tern'

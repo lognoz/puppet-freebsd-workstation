@@ -1,19 +1,20 @@
 # Define: workstation::bash::alias
 #
-# This module manages aliases configurations.
+# This module manages bash aliases configurations.
 #
-# Parameters:
-#   [*content*]
-#     Content of configuration to append.
-#     Default: $title
+# Variables:
+#   [*content*] — Type: `string|array` Default: `$title`
+#   Content of configuration to append.
 #
 # Requires:
 #   Class workstation
 #
 # Sample Usage:
-#   workstation::bash::alias {
-#     'ls="ls -F"'
-#   }
+#   workstation::bash::alias { [
+#     'ls="ls -F"',
+#     'll="ls -lah"',
+#     'emacs="emacs --maximized"'
+#   ]: }
 #
 define workstation::bash::alias (
   Variant[String, Array] $content = $title

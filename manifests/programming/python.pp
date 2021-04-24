@@ -1,5 +1,7 @@
 # Class: workstation::programming::python
 #
+# This class initialize Python programming language.
+#
 # Requires:
 #   Class workstation
 #

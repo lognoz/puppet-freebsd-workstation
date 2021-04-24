@@ -1,5 +1,13 @@
 # Class: workstation::user:vim
 #
+# This class initialize Vim package. This program is a highly
+# configurable text editor built to make creating and changing any
+# kind of text very efficient.
+#
+# Variables:
+#   [*source*] — Type: `string` Default: `undef`
+#   The git repository of vim configuration.
+#
 # Requires:
 #   Class workstation
 #

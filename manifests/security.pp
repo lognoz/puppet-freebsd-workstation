@@ -1,5 +1,7 @@
 # Class: workstation::security
 #
+# This class install improve the system security.
+#
 # Requires:
 #   Class workstation
 #

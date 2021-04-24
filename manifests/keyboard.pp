@@ -3,14 +3,12 @@
 # This class sets keyboard in xorg. For each input device (keyboard,
 # mouse, etc.) it need an InputClass section.
 #
-# Parameters:
-#   [*keyboard*]
-#     String used as kbd layout.
-#     Default: undef
+# Variables:
+#   [*keyboard*] — Type: `string` Default: `undef`
+#   String used as kbd layout.
 #
-#   [*remap_caps*]
-#     Boolean on if caps lock is replaced by escape.
-#     Default: true
+#   [*remap_caps*] — Type: `boolean` Default: `true`
+#   Boolean on if caps lock is replaced by escape.
 #
 # Requires:
 #   Class workstation::x11::xorg

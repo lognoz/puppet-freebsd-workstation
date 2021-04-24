@@ -1,5 +1,11 @@
 # Class: workstation::bash::init
 #
+# This class install bash and some useful configurations.
+#
+# Variables:
+#   [*files*] — Array: `array` Default: `[]`
+#   List of files related to bash that need to be created.
+#
 # Requires:
 #   Class workstation
 #

@@ -1,10 +1,19 @@
 # Class: workstation::multimedia::wget
 #
+# This initialize wget package. This computer program that retrieves
+# content from web servers.
+#
+# Variables:
+#   [*directory*] — Type: `string` Default: `download`
+#   String used as download directory for torrent file.
+#
 # Requires:
 #   Class workstation
 #
 # Sample Usage:
-#   include workstation::multimedia::wget
+#   class { 'workstation::multimedia::wget':
+#     directory => 'download/wget'
+#   }
 #
 class workstation::multimedia::wget (
   String $directory = 'download'

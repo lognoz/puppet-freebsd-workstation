@@ -1,10 +1,19 @@
 # Class: workstation::multimedia::torrent
 #
+# This class initialize transmission package. This program is a lightweight,
+# command-line BitTorrent client with scripting capabilities.
+#
+# Variables:
+#   [*directory*] — Type: `string` Default: `download`
+#   String used as download directory for torrent file.
+#
 # Requires:
 #   Class workstation
 #
 # Sample Usage:
-#   include workstation::multimedia:torrent
+#   class { 'workstation::multimedia::torrent':
+#     directory => 'download/torrent'
+#   }
 #
 class workstation::multimedia::torrent (
   String $directory = 'download'

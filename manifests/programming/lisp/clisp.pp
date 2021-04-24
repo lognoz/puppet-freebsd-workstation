@@ -1,5 +1,7 @@
 # Class: workstation::programming::lisp::clisp
 #
+# This class initialize Common Lisp programming language.
+#
 # Requires:
 #   Class workstation
 #

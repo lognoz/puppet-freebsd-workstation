@@ -2,11 +2,32 @@
 #
 # This module manages system configurations.
 #
+# Variables:
+#   [*path*] — Type: `string` Default: `undef`
+#   String use as path location to add content.
+#
+#   [*content*] — Type: `array` Default: `undef`
+#   List of lines to add to the path location.
+#
 # Requires:
 #   Class workstation
 #
 # Sample Usage:
-#   include workstation::system
+#   workstation::system { 'Optimize boot loader':
+#     path => '/boot/loader.conf',
+#     content => [
+#       # Change boot time kernel tuning.
+#       'kern.ipc.shmseg = 1024',
+#       'kern.ipc.shmmni = 1024',
+#       'kern.maxproc = 100000',
+#
+#       # Configuring asynchronous I/O.
+#       'aio_load = "YES"',
+#
+#       # Enable thermal sensors.
+#       'coretemp_load="YES"'
+#     ]
+#   }
 #
 define workstation::system (
   String $path = undef,

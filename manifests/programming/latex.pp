@@ -1,5 +1,7 @@
 # Class: workstation::programming::latex
 #
+# This class initialize LaTeX programming language.
+#
 # Requires:
 #   Class workstation
 #

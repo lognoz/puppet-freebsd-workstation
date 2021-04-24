@@ -1,5 +1,8 @@
 # Class: workstation::programming::virtualisation
 #
+# This class initialize virtualisation program like *Vagrant*,
+# *Docker* and *Virtualbox*.
+#
 # Requires:
 #   Class workstation
 #

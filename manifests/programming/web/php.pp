@@ -1,5 +1,7 @@
 # Class: workstation::programming::web::php
 #
+# This class initialize PHP programming language.
+#
 # Requires:
 #   Class workstation
 #
