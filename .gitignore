@@ -1,1 +1,2 @@
 manifests/private.pp
+script/puppet_dependencies.json
