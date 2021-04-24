@@ -1,13 +1,17 @@
 # Puppet FreeBSD Workstation
 
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+
 Puppet script for provisioning my FreeBSD desktop workstation.
 
-#### Table of content
+#### Table of Contents
 - [Setup](#setup)
 - [Prerequisites](#prerequisites)
   - [System dependencies](#system-dependencies)
   - [Puppet dependencies](#puppet-dependencies)
 - [Manifests](#manifests)
+[manifests-table-of-contents]
+- [Limitations](#limitations)
 
 ## Setup
 
@@ -39,3 +43,7 @@ make dependencies
 ## Manifests
 
 [manifests-content]
+
+## Limitations
+
+This module is only usable with FreeBSD.
