@@ -1,4 +1,4 @@
-# Class: workstation::user:emacs
+# Class: workstation::user::emacs
 #
 # This class initialize Emacs package. This program is a highly
 # customizable editor indeed, it has been customized to the point

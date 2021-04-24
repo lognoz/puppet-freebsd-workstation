@@ -1,4 +1,4 @@
-# Class: workstation::user:vim
+# Class: workstation::user::vim
 #
 # This class initialize Vim package. This program is a highly
 # configurable text editor built to make creating and changing any

@@ -1,4 +1,4 @@
-# Define: workstation::x11:conf
+# Define: workstation::x11::conf
 #
 # This module manages Xorg configurations.
 #
