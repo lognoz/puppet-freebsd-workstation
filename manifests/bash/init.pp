@@ -25,6 +25,10 @@ class workstation::bash::init (
 
   include workstation
 
+  exec { 'Change permanently the default shell':
+    command => 'chsh -s /usr/local/bin/bash'
+  }
+
   $files.each |String $filename| {
     file { "/home/${workstation::username}/${filename}":
       ensure => present,
