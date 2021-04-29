@@ -52,7 +52,7 @@ freebsd-dependencies: check-privilege check-internet
 	done
 
 execute: check-requirements refresh
-	@puppet apply ${SRC}/example.pp
+	@puppet apply --modulepath=${PUPPET_DIR} ${SRC}/example.pp
 
 documentation:
 	@python3.7 script/doc.py
