@@ -5,7 +5,7 @@
 # over 1000 other video hosting websites.
 #
 # Variables:
-#   [*directory*] — Type: `string` Default: `video`
+#   `directory` — Type: *string* — Default: *video*
 #   String used as download directory for torrent file.
 #
 # Requires:

@@ -3,7 +3,7 @@
 # This class install bash and some useful configurations.
 #
 # Variables:
-#   [*files*] — Array: `array` Default: `[]`
+#   `files` — Type: *array* — Default: *[]*
 #   List of files related to bash that need to be created.
 #
 # Requires:

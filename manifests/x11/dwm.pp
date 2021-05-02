@@ -25,7 +25,7 @@ class workstation::x11::dwm {
   }
 
   exec { 'Lock dwm package':
-    command => "yes | pkg lock dwm"
+    command => 'yes | pkg lock dwm'
   }
 
   workstation::x11::conf { [

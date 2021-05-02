@@ -5,7 +5,7 @@
 # where it is more like an operating system than an editor!
 #
 # Variables:
-#   [*source*] — Type: `string` Default: `undef`
+#   `source` — Type: *string* — Default: *undef*
 #   The git repository of Emacs configuration.
 #
 # Requires:

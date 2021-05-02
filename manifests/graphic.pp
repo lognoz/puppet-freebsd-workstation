@@ -4,9 +4,9 @@
 # It only supports Intel HD and NVIDIA graphics cards.
 #
 # Variables:
-#   [*hardware*] — Type: `string` Default: `undef`
+#   `hardware` — Type: *string* — Default: *undef*
 #   String used to install the right graphic card.
-#   It expected to recives 'intel' or 'nvidia'.
+#   It expected to recives *intel* or *nvidia*.
 #
 # Requires:
 #   Class workstation

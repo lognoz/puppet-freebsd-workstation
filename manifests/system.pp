@@ -3,10 +3,10 @@
 # This module manages system configurations.
 #
 # Variables:
-#   [*path*] — Type: `string` Default: `undef`
+#   `path` — Type: *string* — Default: *undef*
 #   String use as path location to add content.
 #
-#   [*content*] — Type: `array` Default: `undef`
+#   `content` — Type: *array* — Default: *undef*
 #   List of lines to add to the path location.
 #
 # Requires:

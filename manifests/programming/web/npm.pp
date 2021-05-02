@@ -4,7 +4,7 @@
 # for the JavaScript programming language.
 #
 # Variables:
-#   [*packages*] — Type: `array` Default: `undef`
+#   `packages` — Type: *array* — Default: *undef*
 #   List of packages to be install globally.
 #
 # Requires:

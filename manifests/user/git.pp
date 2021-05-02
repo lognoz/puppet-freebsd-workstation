@@ -5,13 +5,13 @@
 # software development.
 #
 # Variables:
-#   [*username*] — Type: `string` Default: `undef`
+#   `username` — Type: *string* — Default: *undef*
 #   Content of git user name.
 #
-#   [*email*] — Type: `string` Default: `undef`
+#   `email` — Type: *string* — Default: *undef*
 #   Content of git user email.
 #
-#   [*url*] — Type: `hash|undef` Default: `undef`
+#   `url` — Type: *hash|undef* — Default: *undef*
 #   Hash of git url to be rewritten.
 #
 # Requires:

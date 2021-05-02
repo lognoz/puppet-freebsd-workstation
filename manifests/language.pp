@@ -4,11 +4,11 @@
 # tool program.
 #
 # Variables:
-#   [*aspell*] — Type: `string` Default: `undef`
+#   `aspell` — Type: *string* — Default: *undef*
 #   Array of languages to install via Freebsd ports. Make sure
 #   to have the right package name before to call this class.
 #
-#   [*directory*] — Type: `string` Default: `~/.share`
+#   `directory` — Type: *string* — Default: *~/.share*
 #   The location on where to install Language Tool package.
 #
 # Requires:

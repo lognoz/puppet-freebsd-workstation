@@ -5,31 +5,31 @@
 # the music folder.
 #
 # Variables:
-#   [*desktop*] — Type: `string` Default: `/`
+#   `desktop` — Type: *string* — Default: */*
 #   The desktop user directory
 #
-#   [*document*] — Type: `string` Default: `/document`
+#   `document` — Type: *string* — Default: */document*
 #   The document user directory
 #
-#   [*download*] — Type: `string` Default: `/download`
+#   `download` — Type: *string* — Default: */download*
 #   The download user directory
 #
-#   [*music*] — Type: `string` Default: `/music`
+#   `music` — Type: *string* — Default: */music*
 #   The music user directory
 #
-#   [*picture*] — Type: `string` Default: `/picture`
+#   `picture` — Type: *string* — Default: */picture*
 #   The picture user directory
 #
-#   [*public*] — Type: `string` Default: `/public`
+#   `public` — Type: *string* — Default: */public*
 #   The public user directory
 #
-#   [*template*] — Type: `string` Default: `/template`
+#   `template` — Type: *string* — Default: */template*
 #   The template user directory
 #
-#   [*video*] — Type: `string` Default: `/video`
+#   `video` — Type: *string* — Default: */video*
 #   The video user directory
 #
-#   [*directories*] — Type: `array` Default: `[]`
+#   `directories` — Type: *array* — Default: *[]*
 #   The list of directories that need to be created
 #
 # Requires:

@@ -5,7 +5,7 @@
 # the Mozilla Foundation and its subsidiary, the Mozilla Corporation.
 #
 # Variables:
-#   [*extensions*] — Type: `array` Default: `[]`
+#   `extensions` — Type: *array* — Default: *[]*
 #   List of extensions that you want to install in Firefox.
 #
 # Requires:

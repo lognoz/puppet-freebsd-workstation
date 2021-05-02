@@ -4,10 +4,10 @@
 # mouse, etc.) it need an InputClass section.
 #
 # Variables:
-#   [*keyboard*] — Type: `string` Default: `undef`
+#   `keyboard` — Type: *string* — Default: *undef*
 #   String used as kbd layout.
 #
-#   [*remap_caps*] — Type: `boolean` Default: `true`
+#   `remap_caps` — Type: *boolean* — Default: *true*
 #   Boolean on if caps lock is replaced by escape.
 #
 # Requires:

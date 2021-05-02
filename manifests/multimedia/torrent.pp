@@ -4,7 +4,7 @@
 # command-line BitTorrent client with scripting capabilities.
 #
 # Variables:
-#   [*directory*] — Type: `string` Default: `download`
+#   `directory` — Type: *string* — Default: *download*
 #   String used as download directory for torrent file.
 #
 # Requires:

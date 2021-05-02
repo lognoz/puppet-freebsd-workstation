@@ -3,14 +3,14 @@
 # This class sets FreeBSD package configurations.
 #
 # Variables:
-#   [*prefer_yes*] — Type: `boolean` Default: `true`
+#   `prefer_yes` — Type: *boolean* — Default: *true*
 #   Boolean used to make yes option the default operations
 #   for dialog. Most pkg operations offer a yes/no
 #   question, showing the default as a capital letter.
 #   Being conservative, pkg normally defaults to no.
 #   Default: true
 #
-#   [*autoclean*] — Type: `boolean` Default: `true`
+#   `autoclean` — Type: *boolean* — Default: *true*
 #   Boolean used to automatically clean out the content of
 #   pkg cache after each non dry-run call to 'pkg install'
 #   or 'pkg upgrade'.

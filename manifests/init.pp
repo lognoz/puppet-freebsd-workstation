@@ -4,27 +4,27 @@
 # this file before any workstation subclasses.
 #
 # Variables:
-#   [*username*] — Type: `string` Default: `undef`
+#   `username` — Type: *string* — Default: *undef*
 #   String used to create user and its home directory.
 #
-#   [*password*] — Type: `string` Default: `undef`
+#   `password` — Type: *string* — Default: *undef*
 #   String used as user and root password.
 #
-#   [*timezone*] — Type: `string` Default: `undef`
+#   `timezone` — Type: *string* — Default: *undef*
 #   String used as timezone reference.
 #
-#   [*owner_name*] — Type: `string` Default: `undef`
+#   `owner_name` — Type: *string* — Default: *undef*
 #   String used as computer owner name.
 #
-#   [*owner_email*] — Type: `string` Default: `undef`
+#   `owner_email` — Type: *string* — Default: *undef*
 #   String used as computer owner email.
 #
-#   [*shell*] — Type: `string|undef` Default: `undef`
+#   `shell` — Type: *string|undef* — Default: *undef*
 #   String used as command processor path. If you use zsh on FreeBSD,
 #   you will send /usr/bin/zsh. By default, this class will install
 #   and use bash if $shell is undefined.
 #
-#   [*root*] — Type: `string` Default: `/usr/local/etc/puppet/modules/workstation/`
+#   `root` — Type: *string* — Default: */usr/local/etc/puppet/modules/workstation/*
 #   The reference on where the workstation module is located.
 #
 # Sample Usage:

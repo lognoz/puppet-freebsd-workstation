@@ -5,7 +5,7 @@
 # kind of text very efficient.
 #
 # Variables:
-#   [*source*] — Type: `string` Default: `undef`
+#   `source` — Type: *string* — Default: *undef*
 #   The git repository of vim configuration.
 #
 # Requires:

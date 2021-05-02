@@ -3,7 +3,7 @@
 # This module manages bashrc configurations.
 #
 # Variables:
-#   [*content*] — Type: `string|array` Default: `$title`
+#   `content` — Type: *string|array* — Default: *$title*
 #   Content of configuration to append.
 #
 # Requires:

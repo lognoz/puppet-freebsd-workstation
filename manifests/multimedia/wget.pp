@@ -4,7 +4,7 @@
 # content from web servers.
 #
 # Variables:
-#   [*directory*] — Type: `string` Default: `download`
+#   `directory` — Type: *string* — Default: *download*
 #   String used as download directory for torrent file.
 #
 # Requires:

@@ -3,7 +3,7 @@
 # This module manages bash aliases configurations.
 #
 # Variables:
-#   [*content*] — Type: `string|array` Default: `$title`
+#   `content` — Type: *string|array* — Default: *$title*
 #   Content of configuration to append.
 #
 # Requires:
