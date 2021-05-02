@@ -21,6 +21,11 @@ class workstation::programming::web::mysql {
     config_file  => '/usr/local/etc/mysql/conf.d/server.cnf',
     root_password => '',
     restart => true,
+    override_options => {
+      'mysqld' => {
+        'event_scheduler' => 'on'
+      }
+    }
   }
 
   file_line { 'Change host in phpMyAdmin':
