@@ -4,6 +4,8 @@
 
 Puppet script for provisioning my FreeBSD desktop workstation.
 
+<img align="right" width="300" src="./script/daemon.jpg">
+
 #### Table of Contents
 - [Setup](#setup)
 - [Prerequisites](#prerequisites)
@@ -11,6 +13,8 @@ Puppet script for provisioning my FreeBSD desktop workstation.
   - [Puppet dependencies](#puppet-dependencies)
 - [Manifests](#manifests)
 - [Limitations](#limitations)
+
+<br/>
 
 ## Setup
 
@@ -23,6 +27,8 @@ Finally, change to the directory that was just created.
 ```
 cd puppet-freebsd-workstation
 ```
+
+<br/>
 
 ## Prerequisites
 
@@ -71,6 +77,9 @@ Manage sudo configuration via Puppet
 [saz-timezone](https://forge.puppet.com/modules/saz/timezone) <br/>
 Manage timezone settings via Puppet
 
+
+<br/>
+
 ## Manifests
 
 #### List of available manifests
@@ -113,35 +122,38 @@ Manage timezone settings via Puppet
 - [workstation::x11::dwm](#workstationx11dwm)
 - [workstation::x11::xorg](#workstationx11xorg)
 
+
+<br/>
+
 ### [workstation](manifests/init.pp)
 
 This class sets root and user for FreeBSD systems. Make sure to load  
 this file before any workstation subclasses.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Variables:
-  [*username*] — Type: `string` Default: `undef`  
+  `username` — Type: *string* — Default: *undef*  
   String used to create user and its home directory.  
 
-  [*password*] — Type: `string` Default: `undef`  
+  `password` — Type: *string* — Default: *undef*  
   String used as user and root password.  
 
-  [*timezone*] — Type: `string` Default: `undef`  
+  `timezone` — Type: *string* — Default: *undef*  
   String used as timezone reference.  
 
-  [*owner_name*] — Type: `string` Default: `undef`  
+  `owner_name` — Type: *string* — Default: *undef*  
   String used as computer owner name.  
 
-  [*owner_email*] — Type: `string` Default: `undef`  
+  `owner_email` — Type: *string* — Default: *undef*  
   String used as computer owner email.  
 
-  [*shell*] — Type: `string|undef` Default: `undef`  
+  `shell` — Type: *string|undef* — Default: *undef*  
   String used as command processor path. If you use zsh on FreeBSD,  
   you will send /usr/bin/zsh. By default, this class will install  
   and use bash if $shell is undefined.  
 
-  [*root*] — Type: `string` Default: `/usr/local/etc/puppet/modules/workstation/`  
+  `root` — Type: *string* — Default: */usr/local/etc/puppet/modules/workstation/*  
   The reference on where the workstation module is located.  
 
 #### Sample Usage:
@@ -155,6 +167,8 @@ class { 'workstation':
 }
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::alsamixer](manifests/alsamixer.pp)
@@ -163,7 +177,7 @@ This class initialize alsamixer package. This program is a graphical
 mixer program for the Advanced Linux Sound Architecture that is used  
 to configure sound settings and adjust the volume.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Requires:
   Class workstation  
@@ -173,16 +187,18 @@ to configure sound settings and adjust the volume.
 include workstation::alsamixer
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::bash::alias](manifests/bash/alias.pp)
 
 This module manages bash aliases configurations.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Variables:
-  [*content*] — Type: `string|array` Default: `$title`  
+  `content` — Type: *string|array* — Default: *$title*  
   Content of configuration to append.  
 
 #### Requires:
@@ -197,16 +213,18 @@ workstation::bash::alias { [
 ]: }
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::bash::init](manifests/bash/init.pp)
 
 This class install bash and some useful configurations.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Variables:
-  [*files*] — Array: `array` Default: `[]`  
+  `files` — Type: *array* — Default: *[]*  
   List of files related to bash that need to be created.  
 
 #### Requires:
@@ -217,16 +235,18 @@ This class install bash and some useful configurations.
 include workstation::bash::init
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::bash::rc](manifests/bash/rc.pp)
 
 This module manages bashrc configurations.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Variables:
-  [*content*] — Type: `string|array` Default: `$title`  
+  `content` — Type: *string|array* — Default: *$title*  
   Content of configuration to append.  
 
 #### Requires:
@@ -239,6 +259,8 @@ workstation::bash::rc {
 }
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::doas](manifests/doas.pp)
@@ -246,7 +268,7 @@ workstation::bash::rc {
 This class sets doas package. This program allows a regular user to  
 run commands as another user (usually root).  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Requires:
   Class workstation  
@@ -256,13 +278,15 @@ run commands as another user (usually root).
 include workstation::doas
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::fonts](manifests/fonts.pp)
 
 This class install system fonts.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Requires:
   Class workstation  
@@ -272,6 +296,8 @@ This class install system fonts.
 include workstation::fonts
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::gnu](manifests/gnu.pp)
@@ -279,7 +305,7 @@ include workstation::fonts
 This class install GNU utils and libraries like *gmake*, *ripgrep*,  
 *gls*, *gcc*, etc.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Requires:
   Class workstation  
@@ -289,6 +315,8 @@ This class install GNU utils and libraries like *gmake*, *ripgrep*,
 include workstation::gnu
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::graphic](manifests/graphic.pp)
@@ -296,12 +324,12 @@ include workstation::gnu
 This class add graphics support to make FreeBSD usable as a desktop.  
 It only supports Intel HD and NVIDIA graphics cards.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Variables:
-  [*hardware*] — Type: `string` Default: `undef`  
+  `hardware` — Type: *string* — Default: *undef*  
   String used to install the right graphic card.  
-  It expected to recives 'intel' or 'nvidia'.  
+  It expected to recives *intel* or *nvidia*.  
 
 #### Requires:
   Class workstation  
@@ -313,6 +341,8 @@ class { 'workstation::graphic':
 }
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::keyboard](manifests/keyboard.pp)
@@ -320,13 +350,13 @@ class { 'workstation::graphic':
 This class sets keyboard in xorg. For each input device (keyboard,  
 mouse, etc.) it need an InputClass section.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Variables:
-  [*keyboard*] — Type: `string` Default: `undef`  
+  `keyboard` — Type: *string* — Default: *undef*  
   String used as kbd layout.  
 
-  [*remap_caps*] — Type: `boolean` Default: `true`  
+  `remap_caps` — Type: *boolean* — Default: *true*  
   Boolean on if caps lock is replaced by escape.  
 
 #### Requires:
@@ -339,6 +369,8 @@ class { 'workstation::keyboard':
 }
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::language](manifests/language.pp)
@@ -346,14 +378,14 @@ class { 'workstation::keyboard':
 This class help to manage multiple languages keyboard and language  
 tool program.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Variables:
-  [*aspell*] — Type: `string` Default: `undef`  
+  `aspell` — Type: *string* — Default: *undef*  
   Array of languages to install via Freebsd ports. Make sure  
   to have the right package name before to call this class.  
 
-  [*directory*] — Type: `string` Default: `~/.share`  
+  `directory` — Type: *string* — Default: *~/.share*  
   The location on where to install Language Tool package.  
 
 #### Requires:
@@ -366,6 +398,8 @@ class { 'workstation::language':
 }
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::multimedia::firefox](manifests/multimedia/firefox.pp)
@@ -374,10 +408,10 @@ This class initialize Firefox package. This program, also known as
 Mozilla Firefox, is a free and open-source web browser developed by  
 the Mozilla Foundation and its subsidiary, the Mozilla Corporation.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Variables:
-  [*extensions*] — Type: `array` Default: `[]`  
+  `extensions` — Type: *array* — Default: *[]*  
   List of extensions that you want to install in Firefox.  
 
 #### Requires:
@@ -398,6 +432,8 @@ class { 'workstation::multimedia::firefox':
 }
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::multimedia::graphic](manifests/multimedia/graphic.pp)
@@ -405,7 +441,7 @@ class { 'workstation::multimedia::firefox':
 This class install *Gimp*, *Blender*, *VLC* and others useful  
 graphic tools.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Requires:
   Class workstation  
@@ -415,6 +451,8 @@ graphic tools.
 include workstation::multimedia:graphic
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::multimedia::torrent](manifests/multimedia/torrent.pp)
@@ -422,10 +460,10 @@ include workstation::multimedia:graphic
 This class initialize transmission package. This program is a lightweight,  
 command-line BitTorrent client with scripting capabilities.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Variables:
-  [*directory*] — Type: `string` Default: `download`  
+  `directory` — Type: *string* — Default: *download*  
   String used as download directory for torrent file.  
 
 #### Requires:
@@ -438,6 +476,8 @@ class { 'workstation::multimedia::torrent':
 }
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::multimedia::wget](manifests/multimedia/wget.pp)
@@ -445,10 +485,10 @@ class { 'workstation::multimedia::torrent':
 This initialize wget package. This computer program that retrieves  
 content from web servers.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Variables:
-  [*directory*] — Type: `string` Default: `download`  
+  `directory` — Type: *string* — Default: *download*  
   String used as download directory for torrent file.  
 
 #### Requires:
@@ -461,6 +501,8 @@ class { 'workstation::multimedia::wget':
 }
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::multimedia::youtube_dl](manifests/multimedia/youtube_dl.pp)
@@ -469,10 +511,10 @@ This class initialize youtube-dl package. This program is an
 open-source download manager for video and audio from YouTube and  
 over 1000 other video hosting websites.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Variables:
-  [*directory*] — Type: `string` Default: `video`  
+  `directory` — Type: *string* — Default: *video*  
   String used as download directory for torrent file.  
 
 #### Requires:
@@ -485,6 +527,8 @@ class { 'workstation::multimedia::youtube_dl':
 }
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::optimization](manifests/optimization.pp)
@@ -492,7 +536,7 @@ class { 'workstation::multimedia::youtube_dl':
 This class install some programs and change system configurations to  
 make FreeBSD usable as a desktop station.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Requires:
   Class workstation  
@@ -502,23 +546,25 @@ make FreeBSD usable as a desktop station.
 include workstation::optimization
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::package](manifests/package.pp)
 
 This class sets FreeBSD package configurations.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Variables:
-  [*prefer_yes*] — Type: `boolean` Default: `true`  
+  `prefer_yes` — Type: *boolean* — Default: *true*  
   Boolean used to make yes option the default operations  
   for dialog. Most pkg operations offer a yes/no  
   question, showing the default as a capital letter.  
   Being conservative, pkg normally defaults to no.  
   Default: true  
 
-  [*autoclean*] — Type: `boolean` Default: `true`  
+  `autoclean` — Type: *boolean* — Default: *true*  
   Boolean used to automatically clean out the content of  
   pkg cache after each non dry-run call to 'pkg install'  
   or 'pkg upgrade'.  
@@ -532,6 +578,8 @@ This class sets FreeBSD package configurations.
 include workstation::package
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::powerd](manifests/powerd.pp)
@@ -539,7 +587,7 @@ include workstation::package
 This class initialize powerd package. This program utility monitors  
 the system state and sets various power control options accordingly.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Requires:
   Class workstation  
@@ -549,13 +597,15 @@ the system state and sets various power control options accordingly.
 include workstation::powerd
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::programming::hacking](manifests/programming/hacking.pp)
 
 This class install most useful hacking tools.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Requires:
   Class workstation  
@@ -565,13 +615,15 @@ This class install most useful hacking tools.
 include workstation::programming::hacking
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::programming::latex](manifests/programming/latex.pp)
 
 This class initialize LaTeX programming language.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Requires:
   Class workstation  
@@ -581,13 +633,15 @@ This class initialize LaTeX programming language.
 include workstation::programming::latex
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::programming::lisp::clisp](manifests/programming/lisp/clisp.pp)
 
 This class initialize Common Lisp programming language.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Requires:
   Class workstation  
@@ -597,13 +651,15 @@ This class initialize Common Lisp programming language.
 include workstation::programming::lisp::clisp
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::programming::python](manifests/programming/python.pp)
 
 This class initialize Python programming language.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Requires:
   Class workstation  
@@ -613,6 +669,8 @@ This class initialize Python programming language.
 include workstation::programming::python
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::programming::virtualisation](manifests/programming/virtualisation.pp)
@@ -620,7 +678,7 @@ include workstation::programming::python
 This class initialize virtualisation program like *Vagrant*,  
 *Docker* and *Virtualbox*.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Requires:
   Class workstation  
@@ -630,13 +688,15 @@ This class initialize virtualisation program like *Vagrant*,
 include workstation::programming:virtualisation
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::programming::web::apache](manifests/programming/web/apache.pp)
 
 This class initialize Apache server.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Requires:
   Class workstation  
@@ -646,13 +706,15 @@ This class initialize Apache server.
 include workstation::programming::web:apache
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::programming::web::mysql](manifests/programming/web/mysql.pp)
 
 This class initialize MySQL database server.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Requires:
   Class workstation  
@@ -662,6 +724,8 @@ This class initialize MySQL database server.
 include workstation::programming::web:mysql
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::programming::web::npm](manifests/programming/web/npm.pp)
@@ -669,10 +733,10 @@ include workstation::programming::web:mysql
 This class initialize npm package. This program is a package manager  
 for the JavaScript programming language.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Variables:
-  [*packages*] — Type: `array` Default: `undef`  
+  `packages` — Type: *array* — Default: *undef*  
   List of packages to be install globally.  
 
 #### Requires:
@@ -683,13 +747,15 @@ for the JavaScript programming language.
 include workstation::programming::web:npm
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::programming::web::php](manifests/programming/web/php.pp)
 
 This class initialize PHP programming language.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Requires:
   Class workstation  
@@ -699,13 +765,15 @@ This class initialize PHP programming language.
 include workstation::programming::web:php
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::security](manifests/security.pp)
 
 This class install improve the system security.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Requires:
   Class workstation  
@@ -715,6 +783,8 @@ This class install improve the system security.
 include workstation::security
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::sudo](manifests/sudo.pp)
@@ -723,7 +793,7 @@ This class initialize sudo package. This program is designed to
 allow a sysadmin to give limited root privileges to users and log  
 root activity.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Requires:
   Class workstation  
@@ -733,19 +803,21 @@ root activity.
 include workstation::sudo
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::system](manifests/system.pp)
 
 This module manages system configurations.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Variables:
-  [*path*] — Type: `string` Default: `undef`  
+  `path` — Type: *string* — Default: *undef*  
   String use as path location to add content.  
 
-  [*content*] — Type: `array` Default: `undef`  
+  `content` — Type: *array* — Default: *undef*  
   List of lines to add to the path location.  
 
 #### Requires:
@@ -770,6 +842,8 @@ workstation::system { 'Optimize boot loader':
 }
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::user::directories](manifests/user/directories.pp)
@@ -778,34 +852,34 @@ This class manages custom directories and xdg-user-dirs, a tool to
 help manage well known user directories like the desktop folder and  
 the music folder.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Variables:
-  [*desktop*] — Type: `string` Default: `/`  
+  `desktop` — Type: *string* — Default: */*  
   The desktop user directory  
 
-  [*document*] — Type: `string` Default: `/document`  
+  `document` — Type: *string* — Default: */document*  
   The document user directory  
 
-  [*download*] — Type: `string` Default: `/download`  
+  `download` — Type: *string* — Default: */download*  
   The download user directory  
 
-  [*music*] — Type: `string` Default: `/music`  
+  `music` — Type: *string* — Default: */music*  
   The music user directory  
 
-  [*picture*] — Type: `string` Default: `/picture`  
+  `picture` — Type: *string* — Default: */picture*  
   The picture user directory  
 
-  [*public*] — Type: `string` Default: `/public`  
+  `public` — Type: *string* — Default: */public*  
   The public user directory  
 
-  [*template*] — Type: `string` Default: `/template`  
+  `template` — Type: *string* — Default: */template*  
   The template user directory  
 
-  [*video*] — Type: `string` Default: `/video`  
+  `video` — Type: *string* — Default: */video*  
   The video user directory  
 
-  [*directories*] — Type: `array` Default: `[]`  
+  `directories` — Type: *array* — Default: *[]*  
   The list of directories that need to be created  
 
 #### Requires:
@@ -824,6 +898,8 @@ class { 'workstation::user::directories':
 }
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::user::emacs](manifests/user/emacs.pp)
@@ -832,10 +908,10 @@ This class initialize Emacs package. This program is a highly
 customizable editor indeed, it has been customized to the point  
 where it is more like an operating system than an editor!  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Variables:
-  [*source*] — Type: `string` Default: `undef`  
+  `source` — Type: *string* — Default: *undef*  
   The git repository of Emacs configuration.  
 
 #### Requires:
@@ -848,6 +924,8 @@ class { 'workstation::user::emacs':
 }
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::user::git](manifests/user/git.pp)
@@ -856,16 +934,16 @@ This class initialize git package. This program is a distributed
 version-control system for tracking changes in source code during  
 software development.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Variables:
-  [*username*] — Type: `string` Default: `undef`  
+  `username` — Type: *string* — Default: *undef*  
   Content of git user name.  
 
-  [*email*] — Type: `string` Default: `undef`  
+  `email` — Type: *string* — Default: *undef*  
   Content of git user email.  
 
-  [*url*] — Type: `hash|undef` Default: `undef`  
+  `url` — Type: *hash|undef* — Default: *undef*  
   Hash of git url to be rewritten.  
 
 #### Requires:
@@ -882,6 +960,8 @@ class { 'workstation::user::git':
 }
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::user::vim](manifests/user/vim.pp)
@@ -890,10 +970,10 @@ This class initialize Vim package. This program is a highly
 configurable text editor built to make creating and changing any  
 kind of text very efficient.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Variables:
-  [*source*] — Type: `string` Default: `undef`  
+  `source` — Type: *string* — Default: *undef*  
   The git repository of vim configuration.  
 
 #### Requires:
@@ -906,16 +986,18 @@ class { 'workstation::user::vim':
 }
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::x11::conf](manifests/x11/conf.pp)
 
 This module manages Xorg configurations.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Variables:
-  [*content*] — Type: `string|array` Default: `$title`  
+  `content` — Type: *string|array* — Default: *$title*  
   Content of configuration to append to xinitrc.  
 
 #### Requires:
@@ -928,13 +1010,15 @@ workstation::x11::conf {
 }
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::x11::dwm](manifests/x11/dwm.pp)
 
 This module manages Dynamic Windows Manager installation.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Requires:
   Class workstation  
@@ -944,6 +1028,8 @@ This module manages Dynamic Windows Manager installation.
 include workstation::x11:dwm
 ```
 
+<br/>
+
 </details>
 
 ### [workstation::x11::xorg](manifests/x11/xorg.pp)
@@ -951,7 +1037,7 @@ include workstation::x11:dwm
 This class sets xorg package. Xorg (commonly referred as simply X)  
 is the most popular display server among Linux and BSD users.  
 
-<details><summary><i>Show detail</i></summary>
+<details><summary>Show detail</summary>
 
 #### Requires:
   Class workstation  
@@ -963,7 +1049,7 @@ include workstation::x11::xorg
 
 </details>
 
-
+<br/>
 
 ## Limitations
 
