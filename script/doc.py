@@ -6,6 +6,7 @@ See the file 'LICENSE' for copying permission
 """
 
 import re
+import sys
 import json
 import glob2
 import os.path
@@ -29,6 +30,13 @@ def edit_file(filename):
     with fileinput.input(filename, inplace=1) as f:
         for line in f:
             yield line.rstrip('\n')
+
+def replace_last(source_string, replace_what, replace_with):
+    """
+    Replace characters at the end of a python string
+    """
+    head, _sep, tail = source_string.rpartition(replace_what)
+    return head + replace_with + tail
 
 def get_puppet_information_by_dependency(package):
     """
@@ -122,7 +130,7 @@ def get_manifest_to_markdown(container, documentation, path):
         elif regex_detail.search(line):
             if is_title_found and not is_detail_found:
                 is_detail_found = True
-                content += '<details><summary><i>Show detail</i></summary>\n\n'
+                content += '<details><summary>Show detail</summary>\n\n'
 
             if not regex_sample_usage.search(line) and is_sample_usage:
                 is_sample_usage = False
@@ -153,6 +161,8 @@ def get_manifest_to_markdown(container, documentation, path):
         content = content.strip() + '\n'
         content += '```\n\n'
 
+    content += '<br/>'
+    content += '\n\n'
     content += '</details>'
 
     if not is_title_found:
@@ -204,6 +214,9 @@ def get_manifests_content():
     for path in get_manifests_files():
         documentation = get_manifest_documentation(path)
         content = get_manifest_to_markdown(content, documentation, path)
+
+    content['manifests'] = content['manifests'].strip()
+    content['manifests'] = replace_last(content['manifests'], '\n\n<br/>', '')
 
     return content
 

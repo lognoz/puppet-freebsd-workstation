@@ -4,6 +4,8 @@
 
 Puppet script for provisioning my FreeBSD desktop workstation.
 
+<img align="right" width="300" src="./script/daemon.jpg">
+
 #### Table of Contents
 - [Setup](#setup)
 - [Prerequisites](#prerequisites)
@@ -11,6 +13,8 @@ Puppet script for provisioning my FreeBSD desktop workstation.
   - [Puppet dependencies](#puppet-dependencies)
 - [Manifests](#manifests)
 - [Limitations](#limitations)
+
+<br/>
 
 ## Setup
 
@@ -23,6 +27,8 @@ Finally, change to the directory that was just created.
 ```
 cd puppet-freebsd-workstation
 ```
+
+<br/>
 
 ## Prerequisites
 
@@ -39,11 +45,19 @@ make dependencies
 
 [puppet-dependencies]
 
+
+<br/>
+
 ## Manifests
 
 #### List of available manifests
 [manifests-table-of-contents]
+
+<br/>
+
 [manifests-content]
+
+<br/>
 
 ## Limitations
 
