@@ -562,13 +562,11 @@ This class sets FreeBSD package configurations.
   for dialog. Most pkg operations offer a yes/no  
   question, showing the default as a capital letter.  
   Being conservative, pkg normally defaults to no.  
-  Default: true  
 
   `autoclean` — Type: *boolean* — Default: *true*  
   Boolean used to automatically clean out the content of  
-  pkg cache after each non dry-run call to 'pkg install'  
-  or 'pkg upgrade'.  
-  Default: true  
+  pkg cache after each non dry-run call to *pkg install*  
+  or *pkg upgrade*.  
 
 #### Requires:
   Class workstation  
