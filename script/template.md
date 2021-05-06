@@ -11,6 +11,7 @@ Puppet script for provisioning my FreeBSD desktop workstation.
 - [Prerequisites](#prerequisites)
   - [System dependencies](#system-dependencies)
   - [Puppet dependencies](#puppet-dependencies)
+- [Usage](#usage)
 - [Manifests](#manifests)
 - [Limitations](#limitations)
 
@@ -45,6 +46,33 @@ make dependencies
 
 [puppet-dependencies]
 
+<br/>
+
+## Usage
+
+Create your own `site.pp` at base path:
+```
+touch site.pp
+```
+
+You can read `example.pp` located to base path to help building your own site node.  
+Add to your file the user that will lead your workstation: 
+
+```puppet
+class { 'workstation':
+  username => 'john',
+  owner_name => 'John Doe',
+  owner_email => 'developer@john-doe.org',
+  timezone => 'America/New_York',
+  password => 'default'
+}
+```
+
+Finally, apply your site file by executing this command. Be carful this will replace directory  
+located at `/usr/local/etc/puppet/modules/workstation/`.
+```
+make
+```
 
 <br/>
 
