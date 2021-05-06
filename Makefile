@@ -5,11 +5,12 @@ MAINTAINER=	developer@lognoz.org
 COMMENT=	Puppet script for provisioning my FreeBSD desktop workstation
 
 PUPPET_DIR=	/usr/local/etc/puppet/modules
-SRC=	${PUPPET_DIR}/workstation
+SRC= ${PUPPET_DIR}/workstation
 
 PIP= pip-3.7
 PUPPET= puppet
 PYTHON= python3.7
+SHELL= csh
 
 FREEBSD_PACKAGES=	git puppet6
 PUPPET_PACKAGES=	puppet-archive puppet-nodejs puppet-php puppetlabs-apache puppetlabs-mysql \
@@ -18,15 +19,28 @@ PUPPET_PACKAGES=	puppet-archive puppet-nodejs puppet-php puppetlabs-apache puppe
 ASSUME_YES= env ASSUME_ALWAYS_YES=yes
 
 
-all: execute
+all: apply-site
 
 dependencies: freebsd-dependencies puppet-dependencies
+
+check-requirements: check-privilege check-internet
 
 documentation:
 	@${PYTHON} script/doc.py
 
-execute: check-requirements refresh
+apply-example-site: check-requirements refresh
+	@if [ ! -f ${SRC}/example.pp ]; then \
+		echo "example.pp not found!"; \
+		exit 1; \
+	fi
 	@puppet apply --modulepath=${PUPPET_DIR} ${SRC}/example.pp
+
+apply-site: check-requirements refresh
+	@if [ ! -f ${SRC}/site.pp ]; then \
+		echo "site.pp not found!"; \
+		exit 1; \
+	fi
+	@puppet apply --modulepath=${PUPPET_DIR} ${SRC}/site.pp
 
 refresh:
 	@if [ `pwd` != ${SRC} ]; then \
@@ -35,8 +49,6 @@ refresh:
 		fi; \
 		cp -r `pwd` ${SRC}; \
 	fi
-
-check-requirements: check-privilege check-internet
 
 check-internet:
 	@if ! nc -zw1 fsf.org 443 > /dev/null 2>&1; then \
@@ -65,5 +77,5 @@ python-dependencies:
 	@${PIP} install -r ./script/requirements.txt
 
 
-.PHONY: all dependencies check-requirements check-internet check-privilege refresh \
-        puppet-dependencies freebsd-dependencies python-dependencies execute documentation
+.PHONY: all dependencies documentation check-requirements check-internet check-privilege refresh \
+        puppet-dependencies freebsd-dependencies python-dependencies apply-example-site apply-site
