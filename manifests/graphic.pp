@@ -47,7 +47,7 @@ class workstation::graphic (
     file_line { 'Add kld to /etc/rc.conf':
       ensure => present,
       path   => '/etc/rc.conf',
-      line   => 'kld_list="nvidia"',
+      line   => 'kld_list="nvidia-modeset"',
       match  => '^kld_list'
     }
   }
