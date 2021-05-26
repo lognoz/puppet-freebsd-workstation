@@ -4,8 +4,6 @@
 
 Puppet script for provisioning my FreeBSD desktop workstation.
 
-<img align="right" width="300" src="./script/daemon.jpg">
-
 #### Table of Contents
 - [Setup](#setup)
 - [Prerequisites](#prerequisites)
