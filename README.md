@@ -88,7 +88,7 @@ touch site.pp
 ```
 
 You can read `example.pp` located to base path to help building your own site node.  
-Add to your file the user that will lead your workstation:
+Add to your file the user that will lead your workstation: 
 
 ```puppet
 class { 'workstation':
@@ -142,6 +142,7 @@ make
 - [workstation::security](#workstationsecurity)
 - [workstation::sudo](#workstationsudo)
 - [workstation::system](#workstationsystem)
+- [workstation::tor](#workstationtor)
 - [workstation::user::directories](#workstationuserdirectories)
 - [workstation::user::emacs](#workstationuseremacs)
 - [workstation::user::git](#workstationusergit)
@@ -866,6 +867,25 @@ workstation::system { 'Optimize boot loader':
     'coretemp_load="YES"'  
   ]  
 }
+```
+
+<br/>
+
+</details>
+
+### [workstation::tor](manifests/tor.pp)
+
+This class initialize tor, a software for enabling anonymous  
+communication by directing Internet traffic.  
+
+<details><summary>Show detail</summary>
+
+#### Requires:
+  Class workstation  
+
+#### Sample Usage:
+```puppet
+include workstation::tor
 ```
 
 <br/>
