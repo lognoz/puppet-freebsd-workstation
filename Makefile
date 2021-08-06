@@ -7,12 +7,12 @@ COMMENT=	Puppet script for provisioning my FreeBSD desktop workstation
 PUPPET_DIR=	/usr/local/etc/puppet/modules
 SRC= ${PUPPET_DIR}/workstation
 
-PIP= pip-3.7
+PIP= pip-3.8
 PUPPET= puppet
-PYTHON= python3.7
+PYTHON= python3.8
 SHELL= csh
 
-FREEBSD_PACKAGES=	git puppet6
+FREEBSD_PACKAGES=	git puppet7
 PUPPET_PACKAGES=	puppet-archive puppet-nodejs puppet-php puppetlabs-apache puppetlabs-mysql \
 						puppetlabs-stdlib puppetlabs-vcsrepo saz-sudo saz-timezone rehan-wget
 
