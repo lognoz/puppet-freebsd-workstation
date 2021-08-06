@@ -41,7 +41,7 @@ make dependencies
 [git](https://git-scm.com/) <br/>
 Distributed source code management tool
 
-[puppet6](https://puppet.com/docs/puppet/latest/puppet_index.html) <br/>
+[puppet7](https://puppet.com/docs/puppet/latest/puppet_index.html) <br/>
 Configuration management framework written in Ruby
 
 ### Puppet dependencies
@@ -823,6 +823,15 @@ root activity.
 #### Requires:
   Class workstation  
 
+#### Vulnerability:
+
+  I now use doas instead of sudo because a severe vulnerability was  
+  found in Unix and Linux operating systems that allows an  
+  unprivileged user to exploit this vulnerability using sudo, causing  
+  a heap overflow to elevate privileges to root without  
+  authentication, or even get listed in the sudoers  
+  file. (CVE-2021-3156)  
+
 #### Sample Usage:
 ```puppet
 include workstation::sudo
@@ -1097,4 +1106,4 @@ include workstation::x11::xorg
 
 ## Limitations
 
-This module is only usable with FreeBSD.
+This module is only usable with FreeBSD 13.0.
