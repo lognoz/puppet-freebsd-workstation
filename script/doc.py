@@ -13,6 +13,7 @@ import os.path
 import fileinput
 import subprocess
 import urllib.request
+
 from shutil import copyfile
 from bs4 import BeautifulSoup
 from make_var import make_vars
@@ -118,7 +119,7 @@ def get_manifest_to_markdown(container, documentation, path):
     is_sample_usage = False
 
     regex_title = re.compile(r'^Class: |^Define: ')
-    regex_detail = re.compile(r'^Variables:|^Requires:|^Sample Usage:')
+    regex_detail = re.compile(r'^Variables:|^Requires:|^Vulnerability:|^Sample Usage:')
     regex_sample_usage = re.compile(r'^Sample Usage:')
 
     for line in documentation.split('\n'):
@@ -194,7 +195,7 @@ def get_manifests_files():
     Get all files located in manifests directory.
     """
     main_class = 'manifests/init.pp'
-    files = glob2.glob('manifests/**/*pp')
+    files = subprocess.getoutput('git ls-files manifests/').split('\n')
 
     files.sort()
     files.remove(main_class)
@@ -213,7 +214,9 @@ def get_manifests_content():
 
     for path in get_manifests_files():
         documentation = get_manifest_documentation(path)
-        content = get_manifest_to_markdown(content, documentation, path)
+
+        if documentation:
+            content = get_manifest_to_markdown(content, documentation, path)
 
     content['manifests'] = content['manifests'].strip()
     content['manifests'] = replace_last(content['manifests'], '\n\n<br/>', '')
@@ -236,7 +239,7 @@ def get_system_information_by_dependency(dependency):
     Get pkg information by dependency.
     """
     result = {}
-    process = subprocess.getoutput("pkg info " + dependency)
+    process = subprocess.getoutput('pkg info ' + dependency)
 
     regex_comment = re.compile(r"^Comment")
     regex_www = re.compile(r"^WWW")
@@ -292,15 +295,23 @@ def get_prerequisites_content(dependencies):
 
     return content.strip()
 
-def replace_dependencies_in_documentation(system_dependencies, puppet_dependencies, manifests_content):
+def get_freebsd_version():
     """
-    Replace dependencies section in documentation.
+    Get FreeBSD version without the patch level number.
+    """
+    return subprocess.getoutput('freebsd-version').split('-')[0]
+
+def replace_in_documentation(freebsd_version, system_dependencies, puppet_dependencies, manifests_content):
+    """
+    Replace variables in documentation.
     """
     copyfile('script/template.md', 'README.md')
 
     file_content = [ line for line in open('README.md') ]
 
     for line in edit_file('README.md'):
+        line = line.replace('[freebsd-version]', freebsd_version)
+
         if line.startswith('[system-dependencies]'):
             print(system_dependencies)
         elif line.startswith('[puppet-dependencies]'):
@@ -320,11 +331,13 @@ def main():
     system_dependencies = get_system_dependencies(dependencies['freebsd'])
     puppet_dependencies = get_puppet_dependencies(dependencies['puppet'])
 
+    freebsd_version = get_freebsd_version()
     system_dependencies_content = get_prerequisites_content(system_dependencies)
     puppet_dependencies_content = get_prerequisites_content(puppet_dependencies)
     manifests_content = get_manifests_content()
 
-    replace_dependencies_in_documentation(
+    replace_in_documentation(
+        freebsd_version,
         system_dependencies_content,
         puppet_dependencies_content,
         manifests_content

@@ -87,4 +87,4 @@ make
 
 ## Limitations
 
-This module is only usable with FreeBSD.
+This module is only usable with FreeBSD [freebsd-version].
