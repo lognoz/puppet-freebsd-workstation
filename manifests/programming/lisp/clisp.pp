@@ -17,6 +17,7 @@ class workstation::programming::lisp::clisp {
   }
 
   package { [
+    'sbcl',
     'clisp',
     'clisp-hyperspec'
   ]: }
