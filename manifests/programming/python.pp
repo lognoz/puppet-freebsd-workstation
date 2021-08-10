@@ -14,8 +14,11 @@ class workstation::programming::python {
     fail('You must include the base workstation class before using any subclasses.')
   }
 
+  $version = '38'
+
   package { [
-    'python37',
-    'py37-pip-run'
+    "python${version}",
+    "py${version}-pip",
+    "py${version}-pip-run"
   ]: }
 }
