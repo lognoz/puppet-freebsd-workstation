@@ -25,7 +25,7 @@ class workstation::programming::web::npm (
     fail('You must include the base workstation class before using any subclasses.')
   }
 
-  package { 'npm-node12': }
+  package { 'npm-node14': }
 
   $packages.each |String $package| {
     exec { "npm install -g ${package}": }
