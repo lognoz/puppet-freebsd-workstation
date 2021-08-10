@@ -3,6 +3,12 @@ DEFAULT_ALWAYS_YES = true;
 ASSUME_ALWAYS_YES = false;
 <% end %>
 
-<% if @autoclean == true %>
+<% if @autoclean == false %>
 AUTOCLEAN = false;
+<% end %>
+
+<% if @plugins.kind_of?(Array) %>
+PKG_PLUGINS_DIR = "/usr/local/lib/pkg/";
+PKG_ENABLE_PLUGINS = true;
+PLUGINS [ <% @plugins.each do |plugin| %><%= plugin.gsub(/\bpkg-/, '') %>, <% end %> ];
 <% end %>
