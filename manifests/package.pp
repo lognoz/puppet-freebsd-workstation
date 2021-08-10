@@ -22,11 +22,18 @@
 #
 class workstation::package (
   Boolean $prefer_yes = true,
-  Boolean $autoclean = true
+  Boolean $autoclean = true,
+  Variant[Array, Undef] $plugins = undef
 ) {
   # Make sure this subclass is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
     fail('You must include the base workstation class before using any subclasses.')
+  }
+
+  if $plugins != undef {
+    $plugins.each |String $plugin| {
+      package { $plugin: }
+    }
   }
 
   file { '/usr/local/etc/pkg.conf':
