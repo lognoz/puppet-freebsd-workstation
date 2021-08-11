@@ -40,7 +40,7 @@
 ;;; Write to file
 
 (define path
-  (command-line #:args ([filename null] [in-terminal null] [is-amend #f]) filename))
+  (car (vector->list (current-command-line-arguments))))
 
 (define file-content
   (file->string path))
