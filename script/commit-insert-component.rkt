@@ -8,9 +8,6 @@
 
 (require "./commit-convention.rkt")
 
-
-;;; System variables
-
 (define staged-files
   (string-split
     (with-output-to-string
@@ -36,15 +33,15 @@
       [(not (null? component)) component]
       [else default-component])))
 
+(define argvs
+  (vector->list (current-command-line-arguments)))
 
-;;; Write to file
-
-(define path
-  (car (vector->list (current-command-line-arguments))))
-
-(define file-content
-  (file->string path))
-
-(call-with-output-file path #:exists 'replace
-  (λ (out)
-    (write-string (string-append matched-component ": " file-content) out)))
+(cond
+  [(or (= (length argvs) 1)
+       (= (length argvs) 2))
+    (let* ([path (car argvs)]
+           [file-content (file->string path)])
+      (call-with-output-file path #:exists 'replace
+        (λ (out)
+          (write-string (string-append matched-component ": " file-content) out))))]
+  [else (exit)])
