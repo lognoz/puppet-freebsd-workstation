@@ -2,9 +2,6 @@
 
 (provide (all-defined-out))
 
-
-;;; Project components and markers
-
 (define default-component "Build")
 
 (define components
