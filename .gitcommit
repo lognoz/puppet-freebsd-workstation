@@ -1,0 +1,24 @@
+#!/usr/bin/env racket
+
+#|
+  This file is to standardizing the commit messages
+  https://github.com/lognoz/gitcommit
+|#
+
+(require gitcommit)
+
+(define use-substitutions #t)
+
+(define markers default-markers)
+
+(define default-component "Build")
+
+(define components
+  (append (generate-components '("*.pp" "**/*.pp"))
+          '(("Make" . "Makefile")
+            ("Doc" . "README.md")
+            ("Example" . "example.pp")
+            ("Templates" . "templates/**")
+            ("Script" . "script/**")
+            ("Manifests" . "manifests/**")
+            ("Files" . "files/**"))))
