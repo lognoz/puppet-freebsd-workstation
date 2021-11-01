@@ -134,10 +134,10 @@ make
 - [workstation::programming::lisp::clisp](#workstationprogramminglispclisp)
 - [workstation::programming::python](#workstationprogrammingpython)
 - [workstation::programming::virtualisation](#workstationprogrammingvirtualisation)
-- [workstation::programming::web::apache](#workstationprogrammingwebapache)
-- [workstation::programming::web::mysql](#workstationprogrammingwebmysql)
-- [workstation::programming::web::npm](#workstationprogrammingwebnpm)
-- [workstation::programming::web::php](#workstationprogrammingwebphp)
+- [workstation::programming::www::apache](#workstationprogrammingwwwapache)
+- [workstation::programming::www::mysql](#workstationprogrammingwwwmysql)
+- [workstation::programming::www::npm](#workstationprogrammingwwwnpm)
+- [workstation::programming::www::php](#workstationprogrammingwwwphp)
 - [workstation::security](#workstationsecurity)
 - [workstation::sudo](#workstationsudo)
 - [workstation::system](#workstationsystem)
@@ -252,8 +252,8 @@ This module manages bash executable.
 <details><summary>Show detail</summary>
 
 #### Variables:
-  `content` — Type: *string|array* — Default: *$title*  
-  Content of bin to append.  
+  `content` — Type: *string* — Default: *undef*  
+  Script content in file.  
 
 #### Requires:
   Class workstation  
@@ -746,7 +746,7 @@ include workstation::programming:virtualisation
 
 </details>
 
-### [workstation::programming::web::apache](manifests/programming/web/apache.pp)
+### [workstation::programming::www::apache](manifests/programming/www/apache.pp)
 
 This class initialize Apache server.  
 
@@ -757,14 +757,14 @@ This class initialize Apache server.
 
 #### Sample Usage:
 ```puppet
-include workstation::programming::web:apache
+include workstation::programming::www:apache
 ```
 
 <br/>
 
 </details>
 
-### [workstation::programming::web::mysql](manifests/programming/web/mysql.pp)
+### [workstation::programming::www::mysql](manifests/programming/www/mysql.pp)
 
 This class initialize MySQL database server.  
 
@@ -775,14 +775,14 @@ This class initialize MySQL database server.
 
 #### Sample Usage:
 ```puppet
-include workstation::programming::web:mysql
+include workstation::programming::www:mysql
 ```
 
 <br/>
 
 </details>
 
-### [workstation::programming::web::npm](manifests/programming/web/npm.pp)
+### [workstation::programming::www::npm](manifests/programming/www/npm.pp)
 
 This class initialize npm package. This program is a package manager  
 for the JavaScript programming language.  
@@ -798,14 +798,14 @@ for the JavaScript programming language.
 
 #### Sample Usage:
 ```puppet
-include workstation::programming::web:npm
+include workstation::programming::www:npm
 ```
 
 <br/>
 
 </details>
 
-### [workstation::programming::web::php](manifests/programming/web/php.pp)
+### [workstation::programming::www::php](manifests/programming/www/php.pp)
 
 This class initialize PHP programming language.  
 
@@ -816,7 +816,7 @@ This class initialize PHP programming language.
 
 #### Sample Usage:
 ```puppet
-include workstation::programming::web:php
+include workstation::programming::www:php
 ```
 
 <br/>
