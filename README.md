@@ -112,6 +112,7 @@ make
 - [workstation](#workstation)
 - [workstation::alsamixer](#workstationalsamixer)
 - [workstation::bash::alias](#workstationbashalias)
+- [workstation::bash::bin](#workstationbashbin)
 - [workstation::bash::init](#workstationbashinit)
 - [workstation::bash::rc](#workstationbashrc)
 - [workstation::doas](#workstationdoas)
@@ -238,6 +239,30 @@ workstation::bash::alias { [
   'll="ls -lah"',  
   'emacs="emacs --maximized"'  
 ]: }
+```
+
+<br/>
+
+</details>
+
+### [workstation::bash::bin](manifests/bash/bin.pp)
+
+This module manages bash executable.  
+
+<details><summary>Show detail</summary>
+
+#### Variables:
+  `content` — Type: *string|array* — Default: *$title*  
+  Content of bin to append.  
+
+#### Requires:
+  Class workstation  
+
+#### Sample Usage:
+```puppet
+workstation::bash::bin { 'torrent':  
+  content => template('workstation/bin/torrent.erb')  
+}
 ```
 
 <br/>
@@ -490,8 +515,11 @@ command-line BitTorrent client with scripting capabilities.
 <details><summary>Show detail</summary>
 
 #### Variables:
-  `directory` — Type: *string* — Default: *download*  
-  String used as download directory for torrent file.  
+  `destination` — Type: *string* — Default: *download*  
+  String used as destination directory for torrent file.  
+
+  `source` — Type: *string* — Default: *download*  
+  String used as source directory for torrent file.  
 
 #### Requires:
   Class workstation  
@@ -499,7 +527,8 @@ command-line BitTorrent client with scripting capabilities.
 #### Sample Usage:
 ```puppet
 class { 'workstation::multimedia::torrent':  
-  directory => 'download/torrent'  
+  destination => 'download/torrent',  
+  source => 'download/browser'  
 }
 ```
 
