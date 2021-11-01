@@ -29,10 +29,8 @@ class workstation::multimedia::wget (
     package_name   => 'wget',
   }
 
-  $wget = "wget --directory-prefix=\"~/${directory}/$(date +'%Y-%m-%d.%s')/\""
-
   workstation::bash::alias { [
-    "get='${wget}'",
-    "index='${wget} --recursive --no-parent --no-host-directories --reject=\"index.html?*\"'"
+    "wget='wget --directory-prefix=\"~/${directory}/$(date +'%Y-%m-%d.%s')/\"'",
+    "wget-index='wget --recursive --no-parent --no-host-directories --reject=\"index.html?*\"'"
   ]: }
 }
