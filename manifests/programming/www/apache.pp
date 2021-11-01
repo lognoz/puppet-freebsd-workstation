@@ -1,4 +1,4 @@
-# Class: workstation::programming::web::apache
+# Class: workstation::programming::www::apache
 #
 # This class initialize Apache server.
 #
@@ -6,9 +6,9 @@
 #   Class workstation
 #
 # Sample Usage:
-#   include workstation::programming::web:apache
+#   include workstation::programming::www:apache
 #
-class workstation::programming::web::apache {
+class workstation::programming::www::apache {
   # Make sure this subclass is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
     fail('You must include the base workstation class before using any subclasses.')
@@ -16,8 +16,8 @@ class workstation::programming::web::apache {
     include workstation
   }
 
-  include workstation::programming::web::php
-  include workstation::programming::web::mysql
+  include workstation::programming::www::php
+  include workstation::programming::www::mysql
 
   class { 'apache': }
 

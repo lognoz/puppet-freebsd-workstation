@@ -1,4 +1,4 @@
-# Class: workstation::programming::web::mysql
+# Class: workstation::programming::www::mysql
 #
 # This class initialize MySQL database server.
 #
@@ -6,9 +6,9 @@
 #   Class workstation
 #
 # Sample Usage:
-#   include workstation::programming::web:mysql
+#   include workstation::programming::www:mysql
 #
-class workstation::programming::web::mysql {
+class workstation::programming::www::mysql {
   # Make sure this subclass is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
     fail('You must include the base workstation class before using any subclasses.')

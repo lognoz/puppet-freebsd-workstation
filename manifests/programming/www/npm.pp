@@ -1,4 +1,4 @@
-# Class: workstation::programming::web::npm
+# Class: workstation::programming::www::npm
 #
 # This class initialize npm package. This program is a package manager
 # for the JavaScript programming language.
@@ -11,9 +11,9 @@
 #   Class workstation
 #
 # Sample Usage:
-#   include workstation::programming::web:npm
+#   include workstation::programming::www:npm
 #
-class workstation::programming::web::npm (
+class workstation::programming::www::npm (
   Array $packages = [
     'grunt-cli',
     'psd-cli',

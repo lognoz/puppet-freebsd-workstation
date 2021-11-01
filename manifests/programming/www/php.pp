@@ -1,4 +1,4 @@
-# Class: workstation::programming::web::php
+# Class: workstation::programming::www::php
 #
 # This class initialize PHP programming language.
 #
@@ -6,9 +6,9 @@
 #   Class workstation
 #
 # Sample Usage:
-#   include workstation::programming::web:php
+#   include workstation::programming::www:php
 #
-class workstation::programming::web::php {
+class workstation::programming::www::php {
   # Make sure this subclass is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
     fail('You must include the base workstation class before using any subclasses.')
