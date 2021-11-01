@@ -28,12 +28,6 @@ check-requirements: check-privilege check-internet
 documentation:
 	@${PYTHON} script/doc.py
 
-attach-git-hooks:
-	@cp script/bin/prepare-commit-msg .git/hooks
-	@chmod +x .git/hooks/prepare-commit-msg
-	@cp script/bin/commit-msg .git/hooks
-	@chmod +x .git/hooks/commit-msg
-
 apply-example-site: check-requirements refresh
 	@if [ ! -f ${SRC}/example.pp ]; then \
 		echo "example.pp not found!"; \
