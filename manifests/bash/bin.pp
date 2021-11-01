@@ -3,8 +3,8 @@
 # This module manages bash executable.
 #
 # Variables:
-#   `content` — Type: *string|array* — Default: *$title*
-#   Content of bin to append.
+#   `content` — Type: *string* — Default: *undef*
+#   Script content in file.
 #
 # Requires:
 #   Class workstation
