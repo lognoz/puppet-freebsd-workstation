@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# This script is used to download torrent easily in the same
+# destination path. If no argument is send, it will used the last
+# torrent file in download directory.
+
+if [ "$1" != "" ]
+then
+  file="$1"
+else
+  file=$(ls -rt ~/<%= @source %>/*.torrent 2> /dev/null | tail -n 1)
+fi
+
+transmission-cli --download-dir ~/<%= @destination %> $file
