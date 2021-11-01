@@ -4,19 +4,24 @@
 # command-line BitTorrent client with scripting capabilities.
 #
 # Variables:
-#   `directory` — Type: *string* — Default: *download*
-#   String used as download directory for torrent file.
+#   `destination` — Type: *string* — Default: *download*
+#   String used as destination directory for torrent file.
+#
+#   `source` — Type: *string* — Default: *download*
+#   String used as source directory for torrent file.
 #
 # Requires:
 #   Class workstation
 #
 # Sample Usage:
 #   class { 'workstation::multimedia::torrent':
-#     directory => 'download/torrent'
+#     destination => 'download/torrent',
+#     source => 'download/browser'
 #   }
 #
 class workstation::multimedia::torrent (
-  String $directory = 'download'
+  String $destination = 'download',
+  String $source = 'download'
 ) {
   # Make sure this subclass is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
@@ -29,7 +34,11 @@ class workstation::multimedia::torrent (
     'transmission-cli':
   }
 
-  workstation::bash::alias {
-    "torrent='transmission-cli --download-dir ~/${directory}'":
+  # workstation::bash::bin {
+  #   'PS1="\W \$ "':
+  # }
+
+  workstation::bash::bin { 'torrent':
+    content => template('workstation/bin/torrent.erb')
   }
 }
