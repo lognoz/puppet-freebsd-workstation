@@ -38,7 +38,8 @@ class workstation::bash::init (
     }
   }
 
-  workstation::bash::rc {
-    '[ -r ~/.aliases ] && [ -f ~/.aliases ] && source ~/.aliases':
-  }
+  workstation::bash::rc { [
+      'export PATH="$PATH:$(find ~/.local/bin -type d | xargs printf \'%s:\')"',
+      '[ -r ~/.aliases ] && [ -f ~/.aliases ] && source ~/.aliases'
+  ]: }
 }
