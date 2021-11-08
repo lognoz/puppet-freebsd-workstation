@@ -19,10 +19,9 @@
 #   `owner_email` — Type: *string* — Default: *undef*
 #   String used as computer owner email.
 #
-#   `shell` — Type: *string|undef* — Default: *undef*
-#   String used as command processor path. If you use zsh on FreeBSD,
-#   you will send /usr/bin/zsh. By default, this class will install
-#   and use bash if $shell is undefined.
+#   `shell` — Type: *string* — Default: *bash*
+#   String used as shell program. If you use zsh on FreeBSD,
+#   you will send "zsh" and puppet will install the dependencies.
 #
 #   `root` — Type: *string* — Default: */usr/local/etc/puppet/modules/workstation/*
 #   The reference on where the workstation module is located.
@@ -43,7 +42,7 @@ class workstation (
   String $owner_name = undef,
   String $owner_email = undef,
   String $root = '/usr/local/etc/puppet/modules/workstation/',
-  Variant[String, Undef] $shell = undef
+  String $shell = 'bash'
 ) {
   # Make sure this script is executed in FreeBSD.
   if $::osfamily != 'FreeBSD' {
@@ -69,16 +68,19 @@ class workstation (
   package { 'coreutils': }
 
   # Define command processor if it's not defined. By default, it will
-  # install and use bash. If you define your own executable shell,
-  # make sure to install it before to call this class.
-  if $shell == undef {
-    package { [
-      'bash',
-      'bash-completion'
-    ]: }
+  # install and use bash.
+  if $shell == 'bash' {
     $processor = '/usr/local/bin/bash'
-  } else {
-    $processor = $shell
+  }
+  elsif $shell == 'zsh' {
+    $processor = '/usr/local/bin/zsh'
+  }
+  else {
+    fail("Parameter shell '${shell}' is not supported.")
+  }
+
+  class { 'workstation::shell':
+    processor => $processor
   }
 
   class { 'timezone':
