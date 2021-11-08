@@ -25,7 +25,7 @@ class workstation::graphic (
   }
 
   if $hardware == 'intel' {
-    package { 'drm-kmod': ensure => installed }
+    package { 'drm-kmod': }
 
     file_line { 'Add kld to /etc/rc.conf':
       ensure => present,
@@ -35,7 +35,7 @@ class workstation::graphic (
     }
   }
   elsif $hardware == 'nvidia' {
-    package { 'nvidia-driver': ensure => installed }
+    package { 'nvidia-driver': }
 
     file_line { 'Add nvidia to /boot/loader.conf':
       ensure => present,
