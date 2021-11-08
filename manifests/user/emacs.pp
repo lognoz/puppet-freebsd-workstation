@@ -5,7 +5,7 @@
 # where it is more like an operating system than an editor!
 #
 # Variables:
-#   `source` — Type: *string* — Default: *undef*
+#   `source` — Type: *string|undef* — Default: *undef*
 #   The git repository of Emacs configuration.
 #
 # Requires:
@@ -17,7 +17,7 @@
 #   }
 #
 class workstation::user::emacs (
-  String $source  = undef
+  Variant[String, Undef] $source = undef
 ) {
   # Make sure this subclass is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
@@ -26,17 +26,32 @@ class workstation::user::emacs (
 
   include workstation
   include workstation::gnu
+  include workstation::programming::python
 
-  package { [
-    'emacs-devel',
-    'py37-python-slugify'
+  # Install Emacs development version.
+  package { 'emacs-devel': }
+
+  # This python package is used to slugify files in dired mode.
+  $python_version = $workstation::programming::python::version
+  package { "py${python_version}-python-slugify": }
+
+  workstation::shell::alias { [
+    "emacs='emacsclient -c -a \"emacs\"'"
   ]: }
 
-  vcsrepo { 'Clone Emacs configuration':
-    ensure   => present,
-    provider => git,
-    path     => "/home/${workstation::username}/.emacs.d",
-    user     => $workstation::username,
-    source   => $source
+  if $source != undef {
+    if defined(Class['workstation::user::dotfiles']) and $workstation::user::dotfiles::use_stow == true {
+      $emacs_path = $workstation::user::dotfiles::path
+    } else {
+      $emacs_path = $workstation::home
+    }
+
+    vcsrepo { 'Clone Emacs configuration':
+      ensure   => present,
+      provider => git,
+      path     => "${emacs_path}/.emacs.d",
+      user     => $workstation::username,
+      source   => $source
+    }
   }
 }
