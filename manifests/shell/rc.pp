@@ -1,6 +1,6 @@
-# Define: workstation::bash::rc
+# Define: workstation::shell::rc
 #
-# This module manages bashrc configurations.
+# This module manages shellrc configurations.
 #
 # Variables:
 #   `content` — Type: *string|array* — Default: *$title*
@@ -10,20 +10,17 @@
 #   Class workstation
 #
 # Sample Usage:
-#   workstation::bash::rc {
+#   workstation::shell::rc {
 #     'alias ls="ls -F"':
 #   }
 #
-define workstation::bash::rc (
+define workstation::shell::rc (
   Variant[String, Array] $content = $title
 ) {
   # Make sure this subclass is executed after workstation is loaded.
-  if ! defined(Class['workstation']) {
-    fail('You must include the base workstation class before using any subclasses.')
+  if ! defined(Class['workstation::shell']) {
+    fail('You must include the base workstation:shell class before using any subclasses.')
   }
-
-  include workstation
-  include workstation::bash::init
 
   if $content.is_a(String) {
     $lines = [ $content ]
@@ -31,10 +28,11 @@ define workstation::bash::rc (
     $lines = $content
   }
 
-  $path = "/home/${workstation::username}/.bashrc"
+  $rc = $workstation::shell::rc
+  $path = "${workstation::home}/${rc}"
 
   $lines.each |String $text| {
-    file_line { "Append ${text} to bashrc":
+    file_line { "Append ${text} to ${rc}":
       ensure => present,
       path   => $path,
       line   => $text,

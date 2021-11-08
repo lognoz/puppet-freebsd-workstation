@@ -1,6 +1,6 @@
-# Define: workstation::bash::bin
+# Define: workstation::shell::bin
 #
-# This module manages bash executable.
+# This module manages shell executable.
 #
 # Variables:
 #   `content` — Type: *string* — Default: *undef*
@@ -10,11 +10,11 @@
 #   Class workstation
 #
 # Sample Usage:
-#   workstation::bash::bin { 'torrent':
+#   workstation::shell::bin { 'torrent':
 #     content => template('workstation/bin/torrent.erb')
 #   }
 #
-define workstation::bash::bin (
+define workstation::shell::bin (
   String $content = undef
 ) {
   # Make sure this subclass is executed after workstation is loaded.
@@ -22,10 +22,7 @@ define workstation::bash::bin (
     fail('You must include the base workstation class before using any subclasses.')
   }
 
-  $bin_directory = "/home/${workstation::username}/.local/bin"
-
-  include workstation
-  include workstation::bash::init
+  $bin_directory = "/${workstation::home}/.local/bin"
 
   file { $bin_directory:
     ensure => directory,

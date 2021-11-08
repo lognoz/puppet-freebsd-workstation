@@ -1,6 +1,6 @@
-# Define: workstation::bash::alias
+# Define: workstation::shell::alias
 #
-# This module manages bash aliases configurations.
+# This module manages shell aliases configurations.
 #
 # Variables:
 #   `content` — Type: *string|array* — Default: *$title*
@@ -10,13 +10,13 @@
 #   Class workstation
 #
 # Sample Usage:
-#   workstation::bash::alias { [
+#   workstation::shell::alias { [
 #     'ls="ls -F"',
 #     'll="ls -lah"',
 #     'emacs="emacs --maximized"'
 #   ]: }
 #
-define workstation::bash::alias (
+define workstation::shell::alias (
   Variant[String, Array] $content = $title
 ) {
   # Make sure this subclass is executed after workstation is loaded.
@@ -24,16 +24,13 @@ define workstation::bash::alias (
     fail('You must include the base workstation class before using any subclasses.')
   }
 
-  include workstation
-  include workstation::bash::init
-
   if $content.is_a(String) {
     $lines = [ $content ]
   } else {
     $lines = $content
   }
 
-  $path = "/home/${workstation::username}/.aliases"
+  $path = "${workstation::home}/.aliases"
 
   $lines.each |String $text| {
     file_line { "Append ${text} to aliases":
