@@ -26,19 +26,13 @@ class workstation::multimedia::torrent (
   # Make sure this subclass is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
     fail('You must include the base workstation class before using any subclasses.')
-  } else {
-    include workstation
   }
 
   package {
     'transmission-cli':
   }
 
-  # workstation::bash::bin {
-  #   'PS1="\W \$ "':
-  # }
-
-  workstation::bash::bin { 'torrent':
+  workstation::shell::bin { 'torrent':
     content => template('workstation/bin/torrent.erb')
   }
 }

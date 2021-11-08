@@ -28,7 +28,7 @@ class workstation::multimedia::youtube_dl (
 
   package { 'youtube_dl': }
 
-  workstation::bash::alias {
+  workstation::shell::alias {
     "youtube='youtube-dl -o \"~/${directory}/%(title)s-%(id)s.%(ext)s\"'":
   }
 }

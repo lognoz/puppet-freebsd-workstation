@@ -40,7 +40,7 @@ class workstation::user::git (
 
   package { 'git': }
 
-  file { "/home/${workstation::username}/.gitconfig":
+  file { "${workstation::home}/.gitconfig":
     ensure  => present,
     owner   => $workstation::username,
     group   => $workstation::username,

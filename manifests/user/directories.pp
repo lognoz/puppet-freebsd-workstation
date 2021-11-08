@@ -70,17 +70,17 @@ class workstation::user::directories (
     mode  => '0755'
   }
 
-  file { "/home/${workstation::username}/.config":
+  file { "${workstation::home}/.config":
     ensure => directory
   }
 
-  file { "/home/${workstation::username}/.config/user-dirs.dirs":
+  file { "${workstation::home}/.config/user-dirs.dirs":
     ensure  => present,
     content => template('workstation/user-dirs.erb')
   }
 
   $directories.each |String $directory| {
-    file { "/home/${workstation::username}/${directory}":
+    file { "${workstation::home}/${directory}":
       ensure => directory
     }
   }

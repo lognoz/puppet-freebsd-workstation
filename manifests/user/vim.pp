@@ -31,7 +31,7 @@ class workstation::user::vim (
   vcsrepo { 'Clone Vim configuration':
     ensure   => present,
     provider => git,
-    path     => "/home/${workstation::username}/.vim",
+    path     => "${workstation::home}/.vim",
     user     => $workstation::username,
     source   => $source
   }

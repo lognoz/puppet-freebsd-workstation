@@ -26,11 +26,9 @@ class workstation::language (
   # Make sure this subclass is executed after workstation is loaded.
   if ! defined(Class['workstation']) {
     fail('You must include the base workstation class before using any subclasses.')
-  } else {
-    include workstation
   }
 
-  $share_directory = "/home/${workstation::username}/${directory}"
+  $share_directory = "/${workstation::home}/${directory}"
 
   # Install package to translates acronyms for you.
   package { 'wtf': }
@@ -52,7 +50,7 @@ class workstation::language (
   exec { 'Install Language Tool package':
     cwd => $share_directory,
     unless => "[ -d ${share_directory}/language-tool ]",
-    command => "curl -L https://raw.githubusercontent.com/languagetool-org/languagetool/master/install.sh | bash",
+    command => "curl -L https://raw.githubusercontent.com/languagetool-org/languagetool/master/install.sh | ${workstation::shell::processor}",
   }
 
   exec { 'Rename Language Tool directory':

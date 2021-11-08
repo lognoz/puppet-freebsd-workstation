@@ -34,7 +34,7 @@ define workstation::x11::conf (
   $lines.each |String $text| {
     file_line { "Append ${text} to xinitrc":
       ensure => present,
-      path   => "/home/${workstation::username}/.xinitrc",
+      path   => "${workstation::home}/.xinitrc",
       line   => $text,
       match  => "^${text}"
     }

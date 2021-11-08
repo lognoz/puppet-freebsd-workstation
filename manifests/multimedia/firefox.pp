@@ -37,7 +37,7 @@ class workstation::multimedia::firefox (
 
   package { 'firefox': }
 
-  $path = "/home/${workstation::username}/.mozilla/extensions/"
+  $path = "${workstation::home}/.mozilla/extensions/"
 
   exec { "Create ${path}":
     creates => $path,
